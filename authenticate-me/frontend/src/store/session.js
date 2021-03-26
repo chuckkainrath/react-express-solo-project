@@ -1,14 +1,18 @@
 import { csrfFetch } from './csrf';
 
-const SESSION_SET = 'session/SET';
-const SESSION_REMOVE = 'session/REMOVE';
+const SESSION_START = 'session/SET';
+const SESSION_END = 'session/REMOVE';
 
-const sessionSet = user => ({
-  type: SESSION_SET,
+export const sessionStart = user => ({
+  type: SESSION_START,
   user
 });
 
-export const sessionStart = ({credential, password}) => async dispatch => {
+export const sessionEnd = () => ({
+  type: SESSION_END
+});
+
+export const login = ({credential, password}) => async dispatch => {
   const url = '/api/session';
   const options = {
     method: 'POST',
@@ -19,23 +23,22 @@ export const sessionStart = ({credential, password}) => async dispatch => {
   }
   const res = await csrfFetch(url, options);
   const resObj = await res.json();
-  dispatch(sessionSet(resObj.user));
+  dispatch(sessionStart(resObj.user));
+  return res;
 }
-
-export const sessionRemove = () => ({
-  type: SESSION_REMOVE
-});
 
 const initialState = { user: null };
 
-export const sessionReducer = (state = initialState, action) => {
+const sessionReducer = (state = initialState, action) => {
   console.log('at session reducer');
   switch (action.type) {
-    case SESSION_SET:
+    case SESSION_START:
       return {...state, user: action.user }
-    case SESSION_REMOVE:
+    case SESSION_END:
       return initialState;
     default:
       return {...state}
   }
 }
+
+export default sessionReducer;
