@@ -13,6 +13,16 @@ const sessionEnd = () => ({
   type: SESSION_END
 });
 
+export const logout = () => async dispatch => {
+  const url = '/api/session';
+  const options = {
+    method: 'DELETE'
+  }
+  const res = await csrfFetch(url, options);
+  dispatch(sessionEnd());
+  return res;
+}
+
 export const login = ({credential, password}) => async dispatch => {
   const url = '/api/session';
   const options = {
