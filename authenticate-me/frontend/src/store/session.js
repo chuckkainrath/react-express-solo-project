@@ -3,12 +3,12 @@ import { csrfFetch } from './csrf';
 const SESSION_START = 'session/SET';
 const SESSION_END = 'session/REMOVE';
 
-export const sessionStart = user => ({
+const sessionStart = user => ({
   type: SESSION_START,
   user
 });
 
-export const sessionEnd = () => ({
+const sessionEnd = () => ({
   type: SESSION_END
 });
 
@@ -30,14 +30,18 @@ export const login = ({credential, password}) => async dispatch => {
 const initialState = { user: null };
 
 const sessionReducer = (state = initialState, action) => {
-  console.log('at session reducer');
+  let newState;
   switch (action.type) {
     case SESSION_START:
-      return {...state, user: action.user }
+      newState = Object.assign({}, state);
+      newState.user = action.user;
+      return newState;
     case SESSION_END:
-      return initialState;
+      newState = Object.assign({}, state);
+      newState.user = null;
+      return newState;
     default:
-      return {...state}
+      return state;
   }
 }
 
