@@ -1,3 +1,4 @@
+import { createStore } from 'redux';
 import { csrfFetch } from './csrf';
 
 const SESSION_START = 'session/SET';
@@ -21,6 +22,22 @@ export const login = ({credential, password}) => async dispatch => {
     },
     body: JSON.stringify({credential, password})
   }
+  const res = await csrfFetch(url, options);
+  const resObj = await res.json();
+  dispatch(sessionStart(resObj.user));
+  return res;
+}
+
+export const signUp = user => async dispatch => {
+  const { username, email, password } = user;
+  const url = '/api/users';
+  const options = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({username, email, password})
+  };
   const res = await csrfFetch(url, options);
   const resObj = await res.json();
   dispatch(sessionStart(resObj.user));
