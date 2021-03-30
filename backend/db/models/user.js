@@ -47,8 +47,24 @@ module.exports = (sequelize, DataTypes) => {
       },
     }
   });
+
+  const userGroupMapping = {
+    through: 'UserGroup',
+    otherKey: 'groupId',
+    foreignKey: 'userId'
+  };
+
+  const inviteMapping = {
+    through: 'Invitation',
+    otherKey: 'groupId',
+    foreignKey: 'userId'
+  }
+
   User.associate = function(models) {
-    // associations can be defined here
+    User.belongsToMany(models.Group, userGroupMapping);
+    User.belongsToMany(models.Group, inviteMapping);
+    User.hasMany(models.MessageBoard, { foreignKey: 'userId' });
+    User.hasMany(models.MessageReply, { foreignKey: 'userId' });
   };
 
   User.prototype.toSafeObject = function() {

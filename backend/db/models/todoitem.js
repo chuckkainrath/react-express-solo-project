@@ -2,8 +2,9 @@
 module.exports = (sequelize, DataTypes) => {
   const TodoItem = sequelize.define('TodoItem', {
     todoGroupId: {
-      type: DataTypes.NUMBER,
-      allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: { model: 'TodoGroups' }
     },
     task: {
       type: DataTypes.STRING(100),
@@ -16,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   TodoItem.associate = function(models) {
-    // associations can be defined here
+    TodoItem.belongsTo(models.TodoGroup, { foreignKey: 'todoGroupId', onDelete: 'CASCADE' }); // Delete items when todo group is
   };
   return TodoItem;
 };

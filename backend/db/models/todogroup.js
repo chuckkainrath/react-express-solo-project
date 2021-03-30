@@ -2,8 +2,9 @@
 module.exports = (sequelize, DataTypes) => {
   const TodoGroup = sequelize.define('TodoGroup', {
     groupId: {
-      type: DataTypes.NUMBER,
-      allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: { model: 'Groups' }
     },
     title: {
       type: DataTypes.STRING(50),
@@ -16,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   TodoGroup.associate = function(models) {
-    // associations can be defined here
+    TodoGroup.belongsTo(models.Group, { foreignKey: 'groupId' });
+    TodoGroup.hasMany(models.TodoItem, { foreignKey: 'todoGroupId' });
   };
   return TodoGroup;
 };

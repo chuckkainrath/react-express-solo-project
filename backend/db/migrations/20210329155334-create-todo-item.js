@@ -10,7 +10,8 @@ module.exports = {
       },
       todoGroupId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: { model: 'TodoGroups' }
       },
       task: {
         type: Sequelize.STRING(100),

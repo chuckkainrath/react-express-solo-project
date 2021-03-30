@@ -2,12 +2,14 @@
 module.exports = (sequelize, DataTypes) => {
   const MessageReply = sequelize.define('MessageReply', {
     messageBoardId: {
-      type: DataTypes.NUMBER,
-      allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: { model: 'MessageBoards' }
     },
     userId: {
-      type: DataTypes.NUMBER,
-      allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: { model: 'Users' }
     },
     reply: {
       type: DataTypes.STRING,
@@ -15,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   MessageReply.associate = function(models) {
-    // associations can be defined here
+    MessageReply.belongsTo(models.MessageBoard, { foreignKey: 'messageBoardId', onDelete: 'CASCADE' });
+    MessageReply.belongsTo(models.User, { foreignKey: 'userId' });
   };
   return MessageReply;
 };

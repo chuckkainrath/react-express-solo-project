@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('MessageBoards', {
+    return queryInterface.createTable('Invitations', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -18,10 +18,6 @@ module.exports = {
         allowNull: false,
         references: { model: 'Users' }
       },
-      message: {
-        type: Sequelize.STRING,
-        allowNull: false
-      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -35,6 +31,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('MessageBoards');
+    return queryInterface.dropTable('Invitations');
   }
 };
