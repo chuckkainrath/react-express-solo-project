@@ -10,11 +10,13 @@ module.exports = {
       },
       messageBoardId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: { model: 'MessageBoards' }
       },
       userId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: { model: 'Users' }
       },
       reply: {
         type: Sequelize.STRING,

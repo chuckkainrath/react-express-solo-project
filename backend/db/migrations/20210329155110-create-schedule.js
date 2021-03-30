@@ -10,7 +10,8 @@ module.exports = {
       },
       groupId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: { model: 'Groups' }
       },
       date: {
         type: Sequelize.STRING,

@@ -2,8 +2,9 @@
 module.exports = (sequelize, DataTypes) => {
   const Schedule = sequelize.define('Schedule', {
     groupId: {
-      type: DataTypes.NUMBER,
-      allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: { model: 'Groups' }
     },
     date: {
       type: DataTypes.STRING,
@@ -15,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   Schedule.associate = function(models) {
-    // associations can be defined here
+    Schedule.belongsTo(models.Group, { foreignKey: 'groupId' });
   };
   return Schedule;
 };
