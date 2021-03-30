@@ -15,7 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   MessageReply.associate = function(models) {
-    // associations can be defined here
+    MessageReply.belongsTo(models.MessageBoard, { foreignKey: 'messageBoardId', onDelete: 'CASCADE' });
+    MessageReply.belongsTo(models.User, { foriegnKey: 'userId' });
   };
   return MessageReply;
 };

@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   TodoGroup.associate = function(models) {
-    // associations can be defined here
+    TodoGroup.belongsTo(models.Group, { foreignKey: 'groupId' });
+    TodoGroup.hasMany(models.TodoItems, { foreignKey: 'todoGroupId' });
   };
   return TodoGroup;
 };
