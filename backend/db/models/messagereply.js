@@ -2,12 +2,14 @@
 module.exports = (sequelize, DataTypes) => {
   const MessageReply = sequelize.define('MessageReply', {
     messageBoardId: {
-      type: DataTypes.NUMBER,
-      allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: { model: 'MessageBoards' }
     },
     userId: {
-      type: DataTypes.NUMBER,
-      allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: { model: 'Users' }
     },
     reply: {
       type: DataTypes.STRING,

@@ -3,11 +3,13 @@ module.exports = (sequelize, DataTypes) => {
   const Invitation = sequelize.define('Invitation', {
     groupId: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: { model: 'Groups' }
     },
     userId: {
       type: DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      references: { model: 'Users' }
     }
   }, {});
   Invitation.associate = function(models) {

@@ -46,7 +46,7 @@ router.get('/:groupId(\\d+)', restoreUser, asyncHandler(async (req, res) => {
   res.json({schedules});
 }));
 
-router.put('/:scheduleId', restoreUser, validateSchedule, asyncHandler(async (res, res) => {
+router.put('/:scheduleId', restoreUser, validateSchedule, asyncHandler(async (req, res) => {
   const { scheduleId } = req.params;
   const userId = req.user.id;
   const { title, date } = req.body;

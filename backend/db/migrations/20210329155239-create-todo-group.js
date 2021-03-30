@@ -10,11 +10,12 @@ module.exports = {
       },
       groupId: {
         type: Sequelize.INTEGER,
-        allowNull: false
+        allowNull: false,
+        references: { model: 'Groups' }
       },
       title: {
         type: Sequelize.STRING(50),
-        allowNull: false
+        allowNull: false,
       },
       completed: {
         type: Sequelize.BOOLEAN,

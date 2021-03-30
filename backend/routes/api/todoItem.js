@@ -40,7 +40,7 @@ router.get('/:todoGroupId(\\d+)', restoreUser, asyncHandler(async (req, res) => 
   res.json({todoItems});
 }));
 
-router.put('/:todoItemId(\\d+)', restoreUser, validateTodoGroup, asyncHandler(async (req, res) => {
+router.put('/:todoItemId(\\d+)', restoreUser, validateTodoItem, asyncHandler(async (req, res) => {
   const { todoItemId } = req.params;
   const { task, completed } = req.body;
   // const userId = req.user.id;
