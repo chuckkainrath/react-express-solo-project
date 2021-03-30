@@ -9,7 +9,7 @@ const todoGroupRouter = require('./todoGroup');
 const scheduleRouter = require('./schedule');
 const todoItemRouter = require('./todoItem');
 const messageReplyRouter = require('./messageReplies');
-const invitationRouter = require('./invitation.js');
+const invitationRouter = require('./invites.js');
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);

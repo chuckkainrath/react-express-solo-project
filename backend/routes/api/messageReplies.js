@@ -21,8 +21,8 @@ router.post('/', restoreUser, validateReply, asyncHandler(async (req, res) => {
   //   return res.status(403).end();
   // }
 
-  const reply = await MessageReply.create({ userId, messageBoardId, reply });
-  res.json({ reply });
+  const newReply = await MessageReply.create({ userId, messageBoardId, reply });
+  res.json({ reply: newReply });
 }));
 
 router.get('/:messageBoardId(\\d+)', restoreUser, asyncHandler(async (req, res) => {

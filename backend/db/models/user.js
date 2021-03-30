@@ -64,7 +64,7 @@ module.exports = (sequelize, DataTypes) => {
     User.belongsToMany(models.Group, userGroupMapping);
     User.belongsToMany(models.Group, inviteMapping);
     User.hasMany(models.MessageBoard, { foreignKey: 'userId' });
-    User.hasMany(models.MessageReplies, { foreignKey: 'userId' });
+    User.hasMany(models.MessageReply, { foreignKey: 'userId' });
   };
 
   User.prototype.toSafeObject = function() {

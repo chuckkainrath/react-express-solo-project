@@ -6,8 +6,9 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false
     },
     ownerId: {
-      type: DataTypes.NUMBER,
-      allowNull: false
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: { model: 'Users', key: 'id' }
     }
   }, {});
 
