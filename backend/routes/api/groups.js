@@ -5,6 +5,7 @@ const { setTokenCookie, requireAuth, restoreUser } = require('../../utils/auth')
 const {
   Group,
   UserGroup,
+  User,
   Schedule,
   MessageBoard,
   MessageReply,
@@ -47,7 +48,10 @@ router.get('/', restoreUser, asyncHandler(async (req, res) => {
   }
   const allGroupData = await Group.findAll({
     where: { id: [1, 2] },
-    include: [{model: Schedule}, {model: TodoGroup}, {model: MessageBoard}]
+    include: [{model: Schedule},
+      {model: TodoGroup, include: [{ model: TodoItem }]},
+      {model: MessageBoard, include: [{model: User, attributes: ['username']},
+        {model: MessageReply, include: [{model: User, attributes: ['username']}]}]}]
    })
   res.json({ allGroupData });
 }));
