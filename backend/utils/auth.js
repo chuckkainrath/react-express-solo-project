@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { jwtConfig } = require('../config');
-const { User } = require('../db/models');
+const { User, UserGroup } = require('../db/models');
 
 const { secret, expiresIn } = jwtConfig;
 
@@ -59,4 +59,8 @@ const requireAuth = [
   }
 ];
 
-module.exports = { setTokenCookie, restoreUser, requireAuth };
+const userInGroup = async (userId, groupId) => {
+  return await UserGroup.findOne({ where: { userId, groupId}})
+}
+
+module.exports = { setTokenCookie, restoreUser, requireAuth, userInGroup };

@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   TodoItem.associate = function(models) {
-    // associations can be defined here
+    TodoItem.belongsTo(models.TodoGroup, { foreignKey: 'todoGroupId', onDelete: 'CASCADE' }); // Delete items when todo group is deleted.
   };
   return TodoItem;
 };

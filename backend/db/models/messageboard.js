@@ -15,7 +15,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   }, {});
   MessageBoard.associate = function(models) {
-    // associations can be defined here
+    MessageBoard.belongsTo(models.Group, { foreignKey: 'groupId' });
+    MessageBoard.hasMany(models.MessageReply, { foreignKey: 'messageBoardId' });
+    MessageBoard.belongsTo(models.User, { foriegnKey: 'userId' });
   };
   return MessageBoard;
 };
