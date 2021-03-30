@@ -34,7 +34,8 @@ router.get('/:groupId(\\d+)', restoreUser, asyncHandler(async (req, res) => {
   }
 
   // Get all messages and replies
-  const messages = await MessageBoard.findAll({ where: { groupId }, include: [{ model: MessageReply }]});
+  const messages = await MessageBoard.findAll({ where: { groupId },
+    include: [{model: User, attributes: ['username']}, { model: MessageReply, include: [{model: User, attributes: ['username']}]}]});
   res.json({ messages });
 }));
 
