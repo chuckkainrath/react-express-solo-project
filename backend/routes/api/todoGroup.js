@@ -22,7 +22,7 @@ router.post('/', restoreUser, validateTodoGroup, asyncHandler(async (req, res) =
     return res.status(403).end();
   }
 
-  const todoGroup = await TodoGroup.create({ title, groupId });
+  const todoGroup = await TodoGroup.create({ title, groupId, completed: false });
   res.json({todoGroup});
 }));
 

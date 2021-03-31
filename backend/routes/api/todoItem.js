@@ -14,7 +14,7 @@ const validateTodoItem = [
 ];
 
 router.post('/', restoreUser, validateTodoItem, asyncHandler(async (req, res) => {
-  const { task, taskGroupId, groupId } = req.body;
+  const { task, todoGroupId, groupId } = req.body;
   const userId = req.user.id;
 
   // Check if user is in group.
@@ -22,8 +22,8 @@ router.post('/', restoreUser, validateTodoItem, asyncHandler(async (req, res) =>
     return res.status(403).end();
   }
 
-  const todoItem = await TodoItem.create({ task, todoGroupId });
-  res.json({todoGroup});
+  const todoItem = await TodoItem.create({ task, todoGroupId, completed: false });
+  res.json({todoItem});
 }));
 
 router.get('/:todoGroupId(\\d+)', restoreUser, asyncHandler(async (req, res) => {
