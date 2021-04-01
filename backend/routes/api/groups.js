@@ -55,8 +55,15 @@ router.get('/', restoreUser, asyncHandler(async (req, res) => {
     include: [{model: Schedule},
       {model: TodoGroup, include: [{ model: TodoItem }]},
       {model: MessageBoard, include: [{model: User, attributes: ['username']},
-        {model: MessageReply, include: [{model: User, attributes: ['username']}]}]}]
-   })
+        {model: MessageReply, include: [{model: User, attributes: ['username']}]}]}],
+    order: [
+      ['createdAt', 'ASC'],
+      [TodoGroup, 'createdAt', 'DESC'],
+      [TodoGroup, TodoItem, 'createdAt', 'ASC'],
+      [MessageBoard, 'createdAt', 'DESC'],
+      [MessageBoard, MessageReply, 'createdAt', 'ASC'],
+    ]
+   });
   res.json({ allGroupData });
 }));
 
