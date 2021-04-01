@@ -7,6 +7,11 @@ const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
 const validateMessage = [
+  check('title')
+    .exists({ checkFalsy: true})
+    .withMessage('Title cannot be empty.')
+    .isLength({ max: 50 })
+    .withMessage('Title cannot be more than 50 characters.'),
   check('message')
     .exists({ checkFalsy: true })
     .withMessage('Message cannot be empty.'),
@@ -15,12 +20,12 @@ const validateMessage = [
 
 router.post('/', restoreUser, validateMessage, asyncHandler(async (req, res) => {
   const { user } = req;
-  const { groupId, message } = req.body;
+  const { groupId, message, title } = req.body;
 
-  if (!(await userInGroup(userId, groupId))) {
+  if (!(await userInGroup(user.id, groupId))) {
     return res.status(403).end();
   }
-  const postedMessage = await MessageBoard.create({ userId: user.id, groupId, message });
+  const postedMessage = await MessageBoard.create({ userId: user.id, groupId, message, title });
   res.json({message: postedMessage});
 }));
 
@@ -42,7 +47,7 @@ router.get('/:groupId(\\d+)', restoreUser, asyncHandler(async (req, res) => {
 router.put('/:messageBoardId', restoreUser, validateMessage, asyncHandler(async (req, res) => {
   const { messageBoardId } = req.params;
   const userId = req.user.id;
-  const { message } = req.body;
+  const { message, title } = req.body;
 
   let newMessage = await MessageBoard.findByPk(messageBoardId);
   if (!newMessage) {
@@ -51,7 +56,7 @@ router.put('/:messageBoardId', restoreUser, validateMessage, asyncHandler(async 
     return res.status(403).end();
   }
 
-  newMessage = await newMessage.update({ message });
+  newMessage = await newMessage.update({ message, title });
   res.json({ message: newMessage });
 }));
 

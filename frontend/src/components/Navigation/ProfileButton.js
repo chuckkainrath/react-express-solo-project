@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import * as sessionActions from '../../store/session';
+import { emptyGroups } from '../../store/group';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
@@ -19,6 +20,7 @@ function ProfileButton({ user }) {
   const logout = e => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    dispatch(emptyGroups());
   }
 
   return (
