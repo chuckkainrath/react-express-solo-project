@@ -4,7 +4,7 @@ function TodoContainer({todoGroups, todoItems}) {
   return (
     <div className='todo__container'>
       <h1>Todo List</h1>
-      {todoGroups.map((todoGroup, idx) => {
+      {todoGroups && todoGroups.map((todoGroup, idx) => {
         return (
           <div key={todoGroup.id} className='todo__group'>
             <div className='todo__group-header'>
