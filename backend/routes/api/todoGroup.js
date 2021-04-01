@@ -2,7 +2,7 @@ const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth, restoreUser, userInGroup } = require('../../utils/auth');
-const { TodoGroup } = require('../../db/models');
+const { TodoGroup, TodoItem } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -22,7 +22,7 @@ router.post('/', restoreUser, validateTodoGroup, asyncHandler(async (req, res) =
     return res.status(403).end();
   }
 
-  const todoGroup = await TodoGroup.create({ title, groupId });
+  const todoGroup = await TodoGroup.create({ title, groupId, completed: false });
   res.json({todoGroup});
 }));
 
@@ -65,15 +65,16 @@ router.delete('/:todoGroupId(\\d+)', restoreUser, asyncHandler(async (req, res) 
   const { todoGroupId } = req.params;
   const userId = req.user.id;
 
-  if (!(await userInGroup(userId, groupId))) {
-    return res.status(403).end();
-  }
+  // if (!(await userInGroup(userId, groupId))) {
+  //   return res.status(403).end();
+  // }
 
   let todoGroup = await TodoGroup.findByPk(todoGroupId);
   if (!todoGroupId) {
     return res.status(404).end();
   }
 
+  await TodoItem.destroy({where: { todoGroupId }});
   await todoGroup.destroy();
 
   res.json();
