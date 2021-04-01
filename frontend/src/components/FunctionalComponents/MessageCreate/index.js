@@ -1,17 +1,19 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import { createMessage } from '../../../store/group';
+import { useParams, useHistory } from 'react-router-dom';
+import { createMessage, editMessage } from '../../../store/group';
 
-function MessageCreate() {
+function MessageCreate({oldTitle, oldMessage, messageId, toggleEditMsg}) {
+  let edit = oldTitle && oldMessage;
+  const history = useHistory();
   const dispatch = useDispatch();
-  const { groupIdx } = useParams();
+  const { groupIdx, messageIdx } = useParams();
   const group = useSelector(state => state.group.groups[groupIdx]);
-  const [create, setCreate] = useState(false);
-  const [title, setTitle] = useState('');
-  const [msg, setMsg] = useState('');
-  const [titleInvalid, setTitleInvalid] = useState(true);
-  const [msgInvalid, setMsgInvalid] = useState(true);
+  const [create, setCreate] = useState(edit);
+  const [title, setTitle] = useState(edit ? oldTitle : '');
+  const [msg, setMsg] = useState(edit ? oldMessage : '');
+  const [titleInvalid, setTitleInvalid] = useState(!edit);
+  const [msgInvalid, setMsgInvalid] = useState(!edit);
 
   const titleChange = e => {
     const newTitle = e.target.value;
@@ -32,12 +34,22 @@ function MessageCreate() {
     setMsg(newMsg);
   }
   const submitMsg = () => {
-    dispatch(createMessage({
-      message: msg,
-      title,
-      groupIdx,
-      groupId: group.id
-    }));
+    if (edit) {
+      dispatch(editMessage({
+        message: msg,
+        title,
+        groupIdx,
+        messageId: messageId
+      }));
+      toggleEditMsg(false);
+    } else {
+      dispatch(createMessage({
+        message: msg,
+        title,
+        groupIdx,
+        groupId: group.id
+      }));
+    }
     setTitle('');
     setMsg('');
     setTitleInvalid(true);
@@ -47,7 +59,9 @@ function MessageCreate() {
 
   return (
     <div>
+      {!edit &&
       <button onClick={() => setCreate(!create)}>Create a Message</button>
+      }
       {create && (
         <div>
           <label>
@@ -63,7 +77,9 @@ function MessageCreate() {
             value={msg}
             onChange={msgChange}
           />
-          <button disabled={titleInvalid && msgInvalid} onClick={submitMsg}>Submit Message</button>
+          <button disabled={titleInvalid && msgInvalid} onClick={submitMsg}>
+            {edit ? 'Submit Edit' : 'Submit Message'}
+          </button>
         </div>
       )}
     </div>
