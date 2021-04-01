@@ -24,14 +24,12 @@ function Navigation({ isLoaded }) {
     );
   }
 
-
-
   return (
     <>
       <ul>
         <li>
           <NavLink exact to='/'>Home</NavLink>
-          <button onClick={() => toggleCreateGrp(!createGrp)}>Create a Group</button>
+          {sessionUser && <button onClick={() => toggleCreateGrp(!createGrp)}>Create a Group</button>}
           {isLoaded && sessionLinks}
         </li>
       </ul>
