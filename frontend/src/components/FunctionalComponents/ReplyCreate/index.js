@@ -1,10 +1,12 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { createMessageReply } from '../../../store/group';
+import styles from './ReplyCreate.module.css';
 
 function ReplyCreate({messageId}) {
   const dispatch = useDispatch();
+  const user = useSelector(state => state.session.user);
   const [reply, setReply] = useState('');
   const [btnDisable, setBtnDisable] = useState(true);
   const { groupIdx, messageIdx } = useParams();
@@ -24,7 +26,8 @@ function ReplyCreate({messageId}) {
       reply,
       messageBoardId: messageId,
       groupIdx,
-      messageIdx
+      messageIdx,
+      username: user.username,
     }));
     setReply('');
   }

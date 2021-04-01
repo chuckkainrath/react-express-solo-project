@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { editMessageReply } from '../../../store/group';
+import styles from './MessageReplies.module.css';
 
 function MessageReplies({children}) {
   const dispatch = useDispatch();
@@ -10,6 +11,7 @@ function MessageReplies({children}) {
   const [edit, toggleEdit] = useState(false);
   const [editReply, setEditReply] = useState(children.reply);
   const [editSubmit, setEditSubmit] = useState(true);
+
 
   const changeReply = e => {
     const newReply = e.target.value;
@@ -31,25 +33,31 @@ function MessageReplies({children}) {
     toggleEdit(false);
     setEditSubmit(true);
   }
-
+  console.log(children);
   return (
-    <li>
-      {user.id === children.userId && (
-        <button onClick={() => toggleEdit(!edit)}>
-          {edit ? 'Cancel' : 'Edit'}
-        </button>
-      )}
-      {!edit && <div>{children.reply}</div>}
+    <div className={styles.reply__container}>
+      {!edit &&
+        <div>
+          <p className={styles.reply__user}>{children.username}</p>
+          <p className={styles.reply__reply}>{children.reply}</p>
+        </div>}
+      <div className={styles.edit_btn__container}>
+        {user.id === children.userId && (
+          <button onClick={() => toggleEdit(!edit)}>
+            {edit ? 'Cancel' : 'Edit'}
+          </button>
+        )}
+      </div>
       {edit && (
-        <>
+        <div className={styles.edit__container}>
           <textarea
             value={editReply}
             onChange={changeReply}
           />
           <button disabled={editSubmit} onClick={submitEdit}>Submit</button>
-        </>
+        </div>
       )}
-    </li>
+    </div>
   )
 }
 
