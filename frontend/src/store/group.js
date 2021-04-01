@@ -12,11 +12,17 @@ const TODO_TASK_DELETE = 'TODO_TASK_DELETE';
 const TODO_GROUP_DELETE = 'TODO_GROUP_DELETE';
 const MSG_REPLY_CREATE = 'MSG_REPLY_CREATE';
 const MSG_CREATE = 'MSG_CREATE';
-
+const MSG_EDIT = 'MSG_EDIT';
 
 export const emptyGroups = () => ({
   type: GROUPS_EMPTY,
 })
+
+const editMessageAction = (message, groupIdx) => ({
+  type: MSG_EDIT,
+  message,
+  groupIdx,
+});
 
 const createMessageAction = (message, groupIdx) => ({
   type: MSG_CREATE,
@@ -71,6 +77,23 @@ const deleteTaskAction = (task, groupIdx) => ({
   groupIdx
 });
 
+export const editMessage = ({groupIdx, messageId, message, title}) => async dispatch => {
+  const options = {
+    method: 'PUT',
+    body: JSON.stringify({message, title})
+  }
+  const res = await csrfFetch(`/api/message-boards/${messageId}`, options);
+  const msgRes = await res.json();
+  const newMsg = {
+    id: msgRes.message.id,
+    userId: msgRes.message.userId,
+    groupId: msgRes.message.groupId,
+    title: msgRes.message.title,
+    message: msgRes.message.message
+  };
+  dispatch(editMessageAction(newMsg, groupIdx));
+}
+
 export const createMessage = ({groupIdx, groupId, message, title}) => async dispatch => {
   const options = {
     method: 'POST',
@@ -119,7 +142,6 @@ export const getGroups = () => async dispatch => {
   const res = await csrfFetch('/api/groups');
   const groupsRes = await res.json();
   const groups = flattenGroups(groupsRes);
-  console.log('GETTING GROUPs ', groups);
   dispatch(getGroupsAction(groups));
   return groups;
 }
@@ -171,7 +193,6 @@ export const editTodoTask = ({task, groupIdx, completed}) => async dispatch => {
     completed: taskRes.todoItem.completed,
     task: taskRes.todoItem.task
   }
-  console.log(newTask);
   dispatch(editTaskComplete(newTask, groupIdx))
 }
 
@@ -179,7 +200,6 @@ export const deleteTask = ({task, groupIdx}) => async dispatch => {
   const options = {
     method: 'DELETE',
   }
-  console.log(task);
   await csrfFetch(`/api/todo-items/${task.id}`, options);
   dispatch(deleteTaskAction(task, groupIdx));
 }
@@ -276,6 +296,15 @@ const groupReducer = (state = initialState, action) => {
       newState = cloneDeep(state);
       newState.messageBoards[action.groupIdx].push(action.message);
       newState.messageReplies[action.groupIdx].push([]);
+      return newState;
+    case MSG_EDIT:
+      newState = cloneDeep(state);
+      let groupMessages = newState.messageBoards[action.groupIdx];
+      let msgIdx;
+      groupMessages.forEach((msg, idx) => {
+        if (msg.id === action.message.id) msgIdx = idx;
+      });
+      groupMessages[msgIdx] = action.message;
       return newState;
     default:
       return state;
