@@ -9,13 +9,16 @@ import TodoPage from './components/FunctionalComponents/TodoPage';
 import * as sessionActions from './store/session';
 import MessageBoardPage from './components/FunctionalComponents/MessageBoardPage';
 import MessagePage from './components/FunctionalComponents/MessagePage';
+import { getGroups } from './store/group';
 import './App.css';
 
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
-    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+    dispatch(sessionActions.restoreUser())
+      .then(() => dispatch(getGroups()))
+      .then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return (
