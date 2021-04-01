@@ -9,6 +9,7 @@ import TodoPage from './components/FunctionalComponents/TodoPage';
 import * as sessionActions from './store/session';
 import MessageBoardPage from './components/FunctionalComponents/MessageBoardPage';
 import MessagePage from './components/FunctionalComponents/MessagePage';
+import './App.css';
 
 function App() {
   const dispatch = useDispatch();

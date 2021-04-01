@@ -97,7 +97,8 @@ export const editMessage = ({groupIdx, messageId, message, title}) => async disp
     userId: msgRes.message.userId,
     groupId: msgRes.message.groupId,
     title: msgRes.message.title,
-    message: msgRes.message.message
+    message: msgRes.message.message,
+    username: msgRes.message.username,
   };
   dispatch(editMessageAction(newMsg, groupIdx));
 }
@@ -114,7 +115,8 @@ export const createMessage = ({groupIdx, groupId, message, title}) => async disp
     userId: msgRes.message.userId,
     groupId: msgRes.message.groupId,
     title: msgRes.message.title,
-    message: msgRes.message.message
+    message: msgRes.message.message,
+    username: msgRes.message.username,
   };
   dispatch(createMessageAction(newMsg, groupIdx));
 }
@@ -131,11 +133,12 @@ export const editMessageReply = ({reply, replyId, groupIdx, messageIdx}) => asyn
     userId: replyRes.reply.userId,
     messageBoardId: replyRes.reply.messageBoardId,
     reply: replyRes.reply.reply,
+    username: replyRes.reply.reply,
   };
   dispatch(editReplyAction(newReply, groupIdx, messageIdx));
 }
 
-export const createMessageReply = ({messageBoardId, reply, groupIdx, messageIdx}) => async dispatch => {
+export const createMessageReply = ({messageBoardId, reply, groupIdx, messageIdx, username}) => async dispatch => {
   const options = {
     method: 'POST',
     body: JSON.stringify({messageBoardId, reply})
@@ -147,6 +150,7 @@ export const createMessageReply = ({messageBoardId, reply, groupIdx, messageIdx}
     userId: replyRes.reply.userId,
     messageBoardId: replyRes.reply.messageBoardId,
     reply: replyRes.reply.reply,
+    username,
   }
   dispatch(createMessageReplyAction(newReply, groupIdx, messageIdx));
 }

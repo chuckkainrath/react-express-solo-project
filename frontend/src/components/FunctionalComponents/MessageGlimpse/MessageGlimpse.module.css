@@ -1,0 +1,34 @@
+.msg__container {
+  position: relative;
+  margin: auto;
+  width: 90%;
+  border-bottom: 1px solid gray;
+}
+
+.msg__title {
+  font-size: 1.4rem;
+  font-weight: normal;
+  margin-left: 10px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.msg__user_content {
+  margin-top: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  height: 1.6rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.msg__user {
+  font-size: 1.2rem;
+  font-weight: normal;
+}
+
+.msg__content {
+  font-size: 1.2rem;
+  font-weight: normal;
+}

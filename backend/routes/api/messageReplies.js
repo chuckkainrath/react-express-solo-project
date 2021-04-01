@@ -2,7 +2,7 @@ const router = require('express').Router();
 const asyncHandler = require('express-async-handler');
 
 const { setTokenCookie, requireAuth, restoreUser, userInGroup } = require('../../utils/auth');
-const { MessageReply } = require('../../db/models');
+const { MessageReply, User } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 

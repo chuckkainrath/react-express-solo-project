@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, useHistory } from 'react-router-dom';
 import { createMessage, editMessage } from '../../../store/group';
+import styles from './MessageCreate.module.css';
 
 function MessageCreate({oldTitle, oldMessage, messageId, toggleEditMsg}) {
   let edit = oldTitle && oldMessage;
@@ -58,31 +59,39 @@ function MessageCreate({oldTitle, oldMessage, messageId, toggleEditMsg}) {
   }
 
   return (
-    <div>
+    <>
       {!edit &&
-      <button onClick={() => setCreate(!create)}>Create a Message</button>
-      }
+        <button
+          className={styles.create__btn}
+          onClick={() => setCreate(!create)}>
+          New Message
+        </button>
+        }
       {create && (
-        <div>
-          <label>
+        <div className={styles.create__container}>
+          <div className={styles.create__title}>
+            <label>Title</label>
             <input
               type='text'
               placeholder='Title...'
               value={title}
               onChange={titleChange}
             />
-          </label>
-          <textarea
-            placeholder='Message...'
-            value={msg}
-            onChange={msgChange}
-          />
-          <button disabled={titleInvalid && msgInvalid} onClick={submitMsg}>
+          </div>
+          <div className={styles.create__message}>
+            <label>Message</label>
+            <textarea
+              placeholder='Message...'
+              value={msg}
+              onChange={msgChange}
+            />
+          </div>
+          <button className={styles.submit__btn} disabled={titleInvalid && msgInvalid} onClick={submitMsg}>
             {edit ? 'Submit Edit' : 'Submit Message'}
           </button>
         </div>
       )}
-    </div>
+    </>
   )
 }
 

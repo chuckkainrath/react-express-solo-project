@@ -1,0 +1,36 @@
+.page__container {
+  width: 50%;
+  min-height: 500px;
+  margin: -150px auto 20px auto;
+  position: relative;
+  z-index: 100;
+  border: 1px solid black;
+  padding: 20px 40px 50px 40px;
+  border-radius: 2px;
+  background-color: white;
+}
+
+.page__edit + div {
+  margin: 10px auto 0 auto;
+  position: relative;
+  width: 95%;
+}
+
+.msg__info {
+  border-bottom: 1px solid black;
+  padding: 0 30px;
+}
+
+.msg__info h1 {
+  font-size: 2rem;
+  font-weight: normal;
+}
+
+.msg__info h2 {
+  font-size: 1.3rem;
+  font-weight: normal;
+}
+
+.msg__info p {
+  font-size: 1.3rem;
+}

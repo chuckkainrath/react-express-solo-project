@@ -1,8 +1,16 @@
 .board_container {
-  width: 80%;
-  margin: 0 auto;
+  width: 50%;
+  margin: -150px auto 20px auto;
+  position: relative;
+  z-index: 100;
+  border: 1px solid black;
+  padding: 20px 40px 50px 40px;
+  border-radius: 2px;
+  background-color: white;
 }
 
 .board_title {
   text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 2px solid black;
 }

@@ -1,0 +1,38 @@
+.reply__container {
+  margin: 20px 0;
+  border-bottom: 1px solid grey;
+  padding: 0px 30px;
+  position: relative;
+}
+
+.reply__reply {
+  font-size: 1.1rem;
+}
+
+.reply__user {
+  font-size: 1.3rem;
+}
+
+.edit_btn__container {
+  position: absolute;
+  top: 0;
+  right: 30px;
+}
+
+.edit__container {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.edit__container textarea {
+  width: 90%;
+  height: 8rem;
+  font-size: 1.2rem;
+  resize: none;
+}
+
+.edit__container button {
+  position: absolute;
+  bottom: 14px;
+  right: 0;
+}

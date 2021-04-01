@@ -11,14 +11,16 @@ function MessageBoardPage() {
   const messages = useSelector(state => state.group.messageBoards[groupIdx]);
 
   return (
-    <div className={styles.board_container}>
+    <>
       <OptionsBar />
-      <h1 className={styles.board_title}>Message Board</h1>
-      <MessageCreate />
-      {messages.map((msg, idx) => {
-        return <MessageGlimpse key={msg.id} messageIdx={idx} />
-      })}
-    </div>
+      <div className={styles.board_container}>
+        <h1 className={styles.board_title}>Message Board</h1>
+        <MessageCreate />
+        {messages.map((msg, idx) => {
+          return <MessageGlimpse key={msg.id} messageIdx={idx} />
+        })}
+      </div>
+    </>
   );
 }
 
