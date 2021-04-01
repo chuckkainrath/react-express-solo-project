@@ -5,6 +5,7 @@ import OptionsBar from '../../GroupPageComponents/OptionsBar';
 import MessageReplies from '../MessageReplies';
 import ReplyCreate from '../ReplyCreate';
 import MessageCreate from '../MessageCreate';
+import styles from './MessagePage.module.css';
 
 function MessagePage() {
   const { groupIdx, messageIdx } = useParams();
@@ -14,24 +15,27 @@ function MessagePage() {
   const [editMsg, toggleEditMsg] = useState(false);
 
   return (
-    <div>
+    <>
       <OptionsBar />
-      { user.id === message.userId &&
-        <button onClick={() => toggleEditMsg(!editMsg)}>Edit Message</button> }
-      {editMsg && <MessageCreate toggleEditMsg={toggleEditMsg} messageId={message.id} oldTitle={message.title} oldMessage={message.message} />}
-      {!editMsg &&
-        <>
-          <h1>{message.title}</h1>
-          <p>{message.message}</p>
-        </>
-      }
-      <ul>
-        {replies.map((reply, idx) => {
-          return <MessageReplies key={idx} replyIdx={idx}>{reply}</MessageReplies>
-        })}
-      </ul>
-      <ReplyCreate messageId={message.id} />
-    </div>
+      <div className={styles.page__container}>
+        { user.id === message.userId &&
+          <button className={styles.page__edit} onClick={() => toggleEditMsg(!editMsg)}>Edit</button> }
+        {editMsg && <MessageCreate toggleEditMsg={toggleEditMsg} messageId={message.id} oldTitle={message.title} oldMessage={message.message} />}
+        {!editMsg &&
+          <div className={styles.msg__info}>
+            <h1>{message.title}</h1>
+            <h2>{message.username}</h2>
+            <p>{message.message}</p>
+          </div>
+        }
+        <div className={styles.reply__container}>
+          {replies.map((reply, idx) => {
+            return <MessageReplies key={idx} replyIdx={idx}>{reply}</MessageReplies>
+          })}
+        </div>
+        <ReplyCreate messageId={message.id} />
+      </div>
+    </>
   );
 }
 
