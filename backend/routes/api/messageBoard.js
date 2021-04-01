@@ -22,7 +22,7 @@ router.post('/', restoreUser, validateMessage, asyncHandler(async (req, res) => 
   const { user } = req;
   const { groupId, message, title } = req.body;
 
-  if (!(await userInGroup(userId, groupId))) {
+  if (!(await userInGroup(user.id, groupId))) {
     return res.status(403).end();
   }
   const postedMessage = await MessageBoard.create({ userId: user.id, groupId, message, title });
