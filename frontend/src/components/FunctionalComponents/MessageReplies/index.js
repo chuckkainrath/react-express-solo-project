@@ -12,7 +12,6 @@ function MessageReplies({children}) {
   const [editReply, setEditReply] = useState(children.reply);
   const [editSubmit, setEditSubmit] = useState(true);
 
-
   const changeReply = e => {
     const newReply = e.target.value;
     if (newReply === children.reply || newReply.length === 0) {
@@ -29,11 +28,12 @@ function MessageReplies({children}) {
       replyId: children.id,
       groupIdx,
       messageIdx,
+      username: children.username,
     })); // Finish this
     toggleEdit(false);
     setEditSubmit(true);
   }
-  console.log(children);
+  console.log('USERNAME ', children);
   return (
     <div className={styles.reply__container}>
       {!edit &&
