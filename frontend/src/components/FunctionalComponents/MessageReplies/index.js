@@ -33,7 +33,6 @@ function MessageReplies({children}) {
     toggleEdit(false);
     setEditSubmit(true);
   }
-  console.log('USERNAME ', children);
   return (
     <div className={styles.reply__container}>
       {!edit &&
