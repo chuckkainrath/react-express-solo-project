@@ -121,7 +121,7 @@ export const createMessage = ({groupIdx, groupId, message, title}) => async disp
   dispatch(createMessageAction(newMsg, groupIdx));
 }
 
-export const editMessageReply = ({reply, replyId, groupIdx, messageIdx}) => async dispatch => {
+export const editMessageReply = ({reply, replyId, groupIdx, messageIdx, username}) => async dispatch => {
   const options = {
     method: 'PUT',
     body: JSON.stringify({reply})
@@ -133,7 +133,7 @@ export const editMessageReply = ({reply, replyId, groupIdx, messageIdx}) => asyn
     userId: replyRes.reply.userId,
     messageBoardId: replyRes.reply.messageBoardId,
     reply: replyRes.reply.reply,
-    username: replyRes.reply.reply,
+    username,
   };
   dispatch(editReplyAction(newReply, groupIdx, messageIdx));
 }
