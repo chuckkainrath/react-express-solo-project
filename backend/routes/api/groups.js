@@ -46,8 +46,12 @@ router.get('/', restoreUser, asyncHandler(async (req, res) => {
   if (!userGroups) {
     return res.json();
   }
+  const groupIds = userGroups.map(group => {
+    return group.dataValues.groupId;
+  });
+
   const allGroupData = await Group.findAll({
-    where: { id: [1, 2] },
+    where: { id: groupIds },
     include: [{model: Schedule},
       {model: TodoGroup, include: [{ model: TodoItem }]},
       {model: MessageBoard, include: [{model: User, attributes: ['username']},

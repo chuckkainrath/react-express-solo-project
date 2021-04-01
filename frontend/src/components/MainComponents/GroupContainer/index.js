@@ -8,6 +8,7 @@ function GroupContainer({ groupObj, groupIdx }) {
     const path = `/groups/${groupIdx}`;
     history.push(path);
   }
+  console.log('TODOGROUPS: ', groupObj.todoGroups);
   return (
     <div className='group__container' onClick={redirectToGroup}>
       <h1>{groupObj.group.name}</h1>
