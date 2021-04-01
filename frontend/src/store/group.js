@@ -11,12 +11,20 @@ const TODO_TASK_EDIT = 'TODO_TASK_EDIT';
 const TODO_TASK_DELETE = 'TODO_TASK_DELETE';
 const TODO_GROUP_DELETE = 'TODO_GROUP_DELETE';
 const MSG_REPLY_CREATE = 'MSG_REPLY_CREATE';
+const MSG_REPLY_EDIT = 'MSG_REPLY_EDIT';
 const MSG_CREATE = 'MSG_CREATE';
 const MSG_EDIT = 'MSG_EDIT';
 
 export const emptyGroups = () => ({
   type: GROUPS_EMPTY,
 })
+
+const editReplyAction = (reply, groupIdx, messageIdx) => ({
+  type: MSG_REPLY_EDIT,
+  reply,
+  groupIdx,
+  messageIdx
+});
 
 const editMessageAction = (message, groupIdx) => ({
   type: MSG_EDIT,
@@ -109,6 +117,22 @@ export const createMessage = ({groupIdx, groupId, message, title}) => async disp
     message: msgRes.message.message
   };
   dispatch(createMessageAction(newMsg, groupIdx));
+}
+
+export const editMessageReply = ({reply, replyId, groupIdx, messageIdx}) => async dispatch => {
+  const options = {
+    method: 'PUT',
+    body: JSON.stringify({reply})
+  }
+  const res = await csrfFetch(`/api/message-replies/${replyId}`, options);
+  const replyRes = await res.json();
+  const newReply = {
+    id: replyRes.reply.id,
+    userId: replyRes.reply.userId,
+    messageBoardId: replyRes.reply.messageBoardId,
+    reply: replyRes.reply.reply,
+  };
+  dispatch(editReplyAction(newReply, groupIdx, messageIdx));
 }
 
 export const createMessageReply = ({messageBoardId, reply, groupIdx, messageIdx}) => async dispatch => {
@@ -222,7 +246,7 @@ const initialState = {
 };
 
 const groupReducer = (state = initialState, action) => {
-  let newState, todoGroups, taskGroupIdx, itemGroup, item;
+  let newState, todoGroups, taskGroupIdx, itemGroup, item, msgReplies;
   switch (action.type) {
     case GROUPS_EMPTY:
       newState = cloneDeep(initialState);
@@ -289,8 +313,17 @@ const groupReducer = (state = initialState, action) => {
       return newState;
     case MSG_REPLY_CREATE:
       newState = cloneDeep(state);
-      let msgReplies = newState.messageReplies[action.groupIdx][action.messageIdx];
+      msgReplies = newState.messageReplies[action.groupIdx][action.messageIdx];
       msgReplies.push(action.reply);
+      return newState;
+    case MSG_REPLY_EDIT:
+      newState = cloneDeep(state);
+      msgReplies = newState.messageReplies[action.groupIdx][action.messageIdx];
+      let replyIdx;
+      msgReplies.forEach((reply, idx) => {
+        if (reply.id === action.reply.id) replyIdx = idx;
+      })
+      msgReplies[replyIdx] = action.reply;
       return newState;
     case MSG_CREATE:
       newState = cloneDeep(state);
