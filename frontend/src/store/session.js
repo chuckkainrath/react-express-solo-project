@@ -1,4 +1,3 @@
-import { createStore } from 'redux';
 import { csrfFetch } from './csrf';
 
 const SESSION_START = 'session/SET';
