@@ -1,0 +1,25 @@
+.task__container {
+  border-bottom: 1px solid gray;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.task__list {
+  list-style-type: none;
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
+
+.task__list li {
+  margin-bottom: 5px;
+}
+
+.task__group {
+  font-weight: normal;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.task__none {
+  text-align: center;
+}

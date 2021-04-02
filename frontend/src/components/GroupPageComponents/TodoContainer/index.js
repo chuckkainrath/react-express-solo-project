@@ -10,10 +10,12 @@ function TodoContainer() {
 
   return (
     <div className={styles.todo__container}>
-      <h1>Todo List</h1>
-      {todoGroups.map((group, idx) => {
-        return <TodoTasks key={idx} taskGroup={group.title}>{todoTasks[idx]}</TodoTasks>
-      })}
+      <h1 className={styles.title}>Todo List</h1>
+      <div className={styles.content__container}>
+        {todoGroups.map((group, idx) => {
+          return <TodoTasks key={idx} taskGroup={group.title}>{todoTasks[idx]}</TodoTasks>
+        })}
+      </div>
     </div>
   );
 }

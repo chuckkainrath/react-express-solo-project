@@ -6,3 +6,19 @@
   border-radius: 2px;
   overflow: hidden;
 }
+
+.title {
+  font-weight: normal;
+  font-size: 1.5rem;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  border-bottom: 1px solid gray;
+}
+
+.content__container {
+  overflow: auto;
+  height: 100%;
+}
