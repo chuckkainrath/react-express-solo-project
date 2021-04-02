@@ -1,0 +1,23 @@
+.schedule__container {
+  width: 50%;
+  margin: -150px auto 20px auto;
+  position: relative;
+  min-height: 300px;
+  z-index: 100;
+  border: 1px solid black;
+  padding: 20px 40px 50px 40px;
+  border-radius: 2px;
+  background-color: white;
+}
+
+.schedule__container h1 {
+  text-align: center;
+  border-bottom: 2px solid black;
+  padding-bottom: 10px;
+}
+
+.schedule__container h2 {
+  text-align: center;
+  font-size: 2.0rem;
+  margin-top: 50px;
+}
