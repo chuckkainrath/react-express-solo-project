@@ -1,0 +1,24 @@
+.reply__container {
+  margin-top: 50px;
+}
+
+.reply__container h1 {
+  position: relative;
+  left: 5%;
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-bottom: 5px;
+}
+
+.reply__container textarea {
+  width: 90%;
+  position: relative;
+  height: 8rem;
+  resize: none;
+  left: 5%;
+}
+
+.reply__container button {
+  position: relative;
+  left: 5%;
+}

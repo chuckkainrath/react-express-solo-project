@@ -33,15 +33,14 @@ function ReplyCreate({messageId}) {
   }
 
   return (
-    <div>
-      <label>Add a reply to the message.
-        <textarea
-          placeholder='Add a reply...'
-          value={reply}
-          onChange={editReply}
-        />
-        <button disabled={btnDisable} onClick={submitReply}>Submit Reply</button>
-      </label>
+    <div className={styles.reply__container}>
+      <h1>Add a Reply</h1>
+      <textarea
+        placeholder='Add a reply...'
+        value={reply}
+        onChange={editReply}
+      />
+      <button disabled={btnDisable} onClick={submitReply}>Submit Reply</button>
     </div>
   );
 }

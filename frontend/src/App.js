@@ -18,7 +18,12 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser())
       .then(() => dispatch(getGroups()))
-      .then(() => setIsLoaded(true));
+      .then(() => setIsLoaded(true))
+      .then(() => {
+        const script = document.createElement('script');
+        script.src = "https://kit.fontawesome.com/ad7731e00b.js";
+        document.head.appendChild(script);
+      });
   }, [dispatch]);
 
   return (

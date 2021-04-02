@@ -331,8 +331,8 @@ const groupReducer = (state = initialState, action) => {
       return newState;
     case MSG_CREATE:
       newState = cloneDeep(state);
-      newState.messageBoards[action.groupIdx].push(action.message);
-      newState.messageReplies[action.groupIdx].push([]);
+      newState.messageBoards[action.groupIdx].unshift(action.message);
+      newState.messageReplies[action.groupIdx].unshift([]);
       return newState;
     case MSG_EDIT:
       newState = cloneDeep(state);

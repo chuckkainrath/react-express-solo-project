@@ -1,0 +1,22 @@
+.todo__item {
+  list-style-type: none;
+  position: relative;
+  left: -20px;
+  font-size: 1.2rem;
+}
+
+.task {
+  display: inline-block;
+  width: 80%;
+  margin-left: 5px;
+}
+
+.task__options {
+  display: inline-block;
+  position: relative;
+  top: 0;
+}
+
+i {
+  margin: 0 3px;
+}
