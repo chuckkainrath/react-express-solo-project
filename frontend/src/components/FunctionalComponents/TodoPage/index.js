@@ -10,16 +10,18 @@ function TodoPage() {
   const todoGroups = useSelector(state => state.group.todoGroups[groupIdx]);
 
   return (
-    <div className={styles.page}>
+    <>
       <OptionsBar />
-      <h1 className={styles.title}>Todo List</h1>
-      <div className={styles.container}>
-        {todoGroups.map((group, idx) => {
-          return <TodoGroupContainer key={group.id} todoGroupIdx={idx} />
-        })}
+      <div className={styles.todo_page__container}>
+        <h1 className={styles.title}>Todo List</h1>
+        <div className={styles.container}>
+          {todoGroups.map((group, idx) => {
+            return <TodoGroupContainer key={group.id} todoGroupIdx={idx} />
+          })}
+        </div>
+        <TodoAddGroup />
       </div>
-      <TodoAddGroup />
-    </div>
+    </>
   );
 }
 

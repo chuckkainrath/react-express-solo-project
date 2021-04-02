@@ -1,16 +1,23 @@
 .group_container {
+  position: relative;
   margin-bottom: 50px;
-
-}
-
-.title_container {
-  
+  width: 40%;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding: 10px;
 }
 
 .title {
-  display: inline-block;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-bottom: 20px;
 }
 
-/* .delete {
-
-} */
+.delete {
+  position: relative;
+  left: 50%;
+  bottom: 20px;
+  transform: translateX(-50%);
+  margin-top: 20px;
+}

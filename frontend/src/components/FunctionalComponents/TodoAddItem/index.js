@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { addTodoTask } from '../../../store/group';
+import styles from './TodoAddItem.module.css';
 
 function TodoAddItem({todoGroupId, groupId}) {
   const { groupIdx } = useParams();
@@ -26,7 +27,7 @@ function TodoAddItem({todoGroupId, groupId}) {
   }
 
   return (
-    <div className='todo_add-item'>
+    <div className={styles.todo_item__add}>
       <input
       name='add-item'
       value={task}
