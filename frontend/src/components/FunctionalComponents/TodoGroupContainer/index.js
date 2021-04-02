@@ -17,16 +17,14 @@ function TodoGroupContainer({ todoGroupIdx }) {
 
   return (
     <div className={styles.group_container}>
-      <div className={styles.title_container}>
-        <button className={styles.delete} onClick={deleteGroup}>Delete Group</button>
-        <h1 className={styles.title}>{todoGroup.title}</h1>
-      </div>
-      <ul>
+      <h1 className={styles.title}>{todoGroup.title}</h1>
+      <ul className='item__container'>
         {todoItems.map((item, idx) => {
           return <TodoItem item={item} key={item.id} />
         })}
       </ul>
       <TodoAddItem todoGroupId={todoGroup.id} groupId={todoGroup.groupId} />
+      <button className={styles.delete} onClick={deleteGroup}>Delete Group</button>
     </div>
   );
 }
