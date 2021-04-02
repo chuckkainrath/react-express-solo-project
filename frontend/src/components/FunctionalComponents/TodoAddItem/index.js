@@ -33,7 +33,7 @@ function TodoAddItem({todoGroupId, groupId}) {
       value={task}
       placeholder='Add task...'
       onChange={inputChange} />
-      <button disabled={btnDisable} onClick={submitTask}>Add Task</button>
+      <button disabled={btnDisable} onClick={submitTask}>+ Task</button>
     </div>
   );
 }

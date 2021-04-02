@@ -1,4 +1,9 @@
 .todo_item__add {
   position: relative;
   margin: 0 auto;
+  width: fit-content;
+}
+
+.todo_item__add input {
+  width: 60%;
 }
