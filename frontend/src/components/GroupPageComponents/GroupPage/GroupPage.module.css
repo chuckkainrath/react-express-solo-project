@@ -22,5 +22,5 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
-  gap: 5%;
+  gap: 10%;
 }
