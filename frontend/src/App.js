@@ -19,10 +19,7 @@ function App() {
   useEffect(() => {
     dispatch(sessionActions.restoreUser())
       .then(user => {
-        //return dispatch(getGroups());
-        console.log('USER ', user);
         if (user) {
-          console.log('Getting groups');
           return dispatch(getGroups());
         }
         return;
