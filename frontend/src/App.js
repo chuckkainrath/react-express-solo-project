@@ -9,6 +9,7 @@ import TodoPage from './components/FunctionalComponents/TodoPage';
 import * as sessionActions from './store/session';
 import MessageBoardPage from './components/FunctionalComponents/MessageBoardPage';
 import MessagePage from './components/FunctionalComponents/MessagePage';
+import SchedulePage from './components/FunctionalComponents/SchedulePage';
 import { getGroups } from './store/group';
 import './App.css';
 
@@ -17,7 +18,15 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser())
-      .then(() => dispatch(getGroups()))
+      .then(user => {
+        //return dispatch(getGroups());
+        console.log('USER ', user);
+        if (user) {
+          console.log('Getting groups');
+          return dispatch(getGroups());
+        }
+        return;
+      })
       .then(() => setIsLoaded(true))
       .then(() => {
         const script = document.createElement('script');
@@ -42,6 +51,9 @@ function App() {
           </Route>
           <Route path='/groups/:groupIdx/message-board'>
             <MessageBoardPage />
+          </Route>
+          <Route path='/groups/:groupIdx/schedule'>
+            <SchedulePage />
           </Route>
           <Route path='/groups/:groupIdx/todo-list'>
             <TodoPage />

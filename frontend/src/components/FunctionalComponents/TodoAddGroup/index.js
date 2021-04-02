@@ -36,7 +36,7 @@ function TodoAddGroup() {
         onChange={inputChange}
         placeholder='Add Todo Group...'
       />
-      <button disabled={btnEnabled} onClick={submitGroup}>Add Todo Group</button>
+      <button disabled={btnEnabled} onClick={submitGroup}>+ Group</button>
     </div>
   );
 }
