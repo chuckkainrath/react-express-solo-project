@@ -10,6 +10,10 @@
   background-color: white;
 }
 
+.page__wrapper {
+  margin-top: 20px;
+}
+
 .page__edit + div {
   margin: 10px auto 0 auto;
   position: relative;

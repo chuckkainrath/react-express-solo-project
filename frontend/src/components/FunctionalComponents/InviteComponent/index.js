@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { createMessage, editMessage } from '../../../store/group';
 import { sendInvite } from '../../../store/invite';
+import styles from './InviteComponent.module.css';
 
 function InviteComponent() {
   const dispatch = useDispatch();
@@ -33,26 +34,25 @@ function InviteComponent() {
   }
 
   return (
-    <>
+    <div className={styles.invite__container}>
       <button
-        // className={}
+        className={styles.invite__button}
         onClick={() => toggleShowInv(!showInv)}>
           Invite User
       </button>
       {showInv && (
-        <div>
-          <h1>Username or email</h1>
+        <div className={styles.invite__dropdown}>
           <input
             type='text'
             placeholder='Username or email...'
             value={invitedUser}
             onChange={invChanged} />
           <button  disabled={!submitInv} onClick={sendInv}>
-            Send Invite
+            Send
           </button>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

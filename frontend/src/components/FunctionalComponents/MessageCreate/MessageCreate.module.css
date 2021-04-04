@@ -40,9 +40,9 @@ label {
 }
 
 .create__btn, .submit__btn {
-  padding: 10px;
-  border-radius:5px;
+  padding: 6px;
   text-decoration: none;
+  font-size: 1.2rem;
 }
 
 .create__btn:focus, .submit__btn:focus {

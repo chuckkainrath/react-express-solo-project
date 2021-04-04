@@ -1,0 +1,20 @@
+.invite__container {
+  top: 45px;
+  position: absolute;
+  font-size: 1.2rem;
+  z-index: 100000;
+}
+
+.invite__button {
+  padding: 6px;
+  font-size: 1.2rem;
+  text-decoration: none;
+}
+
+.invite__dropdown {
+  margin-top: 13px;
+}
+
+.invite__dropdown input, .invite__dropdown button {
+  font-size: 1.3rem;
+}

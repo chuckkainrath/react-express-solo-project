@@ -15,7 +15,7 @@ function MessagePage() {
   const [editMsg, toggleEditMsg] = useState(false);
 
   return (
-    <>
+    <div className={styles.page__wrapper}>
       <OptionsBar />
       <div className={styles.page__container}>
         { user.id === message.userId &&
@@ -35,7 +35,7 @@ function MessagePage() {
         </div>
         <ReplyCreate messageId={message.id} />
       </div>
-    </>
+    </div>
   );
 }
 
