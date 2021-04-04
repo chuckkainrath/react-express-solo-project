@@ -1,3 +1,108 @@
-a {
-  margin: 0 20px;
+.nav__bar {
+  width: 100%;
+  display: grid;
+  height: 40px;
+  grid-template-columns: 1fr 8fr 1fr;
+  grid-template-areas:
+    "home . profile";
+}
+
+.nav__profile {
+  grid-area: profile;
+}
+
+.nav__profile > button {
+  font-size: 2.0rem;
+  border: none;
+  color: gray;
+  background-color: white;
+}
+
+.nav__profile > button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.profile__dropdown {
+  border: 1px solid black;
+  list-style-type: none;
+  position: absolute;
+  padding-left: 0;
+  z-index: 1;
+}
+
+.profile__dropdown li {
+  font-size: 1.2rem;
+}
+
+
+.home__icon {
+  font-size: 2.0rem;
+  text-decoration: none;
+  grid-area: home;
+  margin-left: 20px;
+}
+
+.home__icon:visited {
+  color: gray;
+}
+
+.group__create {
+  border: none;
+  text-decoration: none;
+  position: relative;
+  top: 0;
+  background-color: white;
+  color: gray;
+  font-size: 2.3rem;
+}
+
+
+
+.group__create:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.create-group__container {
+  position: absolute;
+  margin-left: 8px;
+}
+
+.create-group__container input {
+  font-size: 1.3rem;
+  width: 300px;
+}
+
+.create-group__container button {
+  margin-top: 5px;
+  font-size: 1.2rem;
+}
+
+.group-create__wrapper {
+  grid-area: home;
+  margin-left: 80px;
+  position: relative;
+}
+
+.sign-in__btn {
+  grid-area: profile;
+  width: fit-content;
+  border: none;
+  background-color: white;
+  display: inline-block;
+  margin-left: 40px;
+  font-size: 1.3rem;
+}
+
+.sign-up__link {
+  text-decoration: none;
+  grid-area: profile;
+  font-size: 1.3rem;
+  display: inline-block;
+  margin-right: 40px;
+}
+
+.sign-up__link:visited {
+  color: black;
 }

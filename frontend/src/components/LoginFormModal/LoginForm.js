@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import * as sessionActions from '../../store/session';
 import { useDispatch } from 'react-redux';
 import { getGroups } from '../../store/group';
+import { getInvites } from '../../store/invite';
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -14,6 +15,7 @@ function LoginForm() {
     setErrors([]);
     return dispatch(sessionActions.login({ credential, password }))
       .then(() => dispatch(getGroups()))
+      .then(() => dispatch(getInvites()))
       .catch(async res => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);

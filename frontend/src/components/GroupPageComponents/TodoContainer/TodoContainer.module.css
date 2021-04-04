@@ -1,6 +1,6 @@
 .todo__container {
   width: 40%;
-  max-height: 500px;
+  height: 500px;
   border: 1px solid gray;
   padding: 10px;
   border-radius: 2px;
