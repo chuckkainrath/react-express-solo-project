@@ -21,3 +21,11 @@ i {
   margin: 0 3px;
   color: gray;
 }
+
+.garbage:hover i {
+  color: red;
+}
+
+.complete i {
+  color: green;
+}
