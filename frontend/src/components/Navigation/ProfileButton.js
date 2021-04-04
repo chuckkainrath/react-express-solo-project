@@ -28,7 +28,7 @@ function ProfileButton({ user }) {
 
   return (
     <div className={'nav__profile'}>
-      <button  onClick={() => setShowMenu(true)}>
+      <button  className={'profile__btn'} onClick={() => setShowMenu(true)}>
         <i className='fas fa-user' />
       </button>
       {showMenu && (

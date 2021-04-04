@@ -14,18 +14,20 @@ function InviteDropdown({invites}) {
   }
 
   return (
-    <div>
-      <ul>
+    <div className='inv__div'>
+      <ul className='inv__list'>
         {invites && invites.map((inv, idx) => {
           return (
             <li key={idx}>
-              <button onClick={() => handleInv(idx, true, inv.id)}>
-                <i class="fal fa-check"></i>
-              </button>
-              <button onClick={() => handleInv(idx, false, inv.id)}>
-                <i class="fal fa-times"></i>
-              </button>
               <span>{inv.groupName}</span>
+              <div className='inv-btn__container'>
+                <button onClick={() => handleInv(idx, true, inv.id)}>
+                  <i class="inv__accept fal fa-check"></i>
+                </button>
+                <button className='inv__decline' onClick={() => handleInv(idx, false, inv.id)}>
+                  <i class="inv__decline fal fa-times"></i>
+                </button>
+              </div>
             </li>
           );
         })}
