@@ -9,7 +9,7 @@ export const flattenGroups = groups => {
     todoGroups: [],
     todoItems: []
   };
-  groups.allGroupData.forEach(group => {
+  groups.forEach(group => {
     const groupData = {name: group.name, ownerId: group.ownerId, id: group.id};
     flattenedGroups.groups.push(groupData);
     const schedules = [];

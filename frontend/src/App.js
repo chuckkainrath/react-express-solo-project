@@ -11,6 +11,7 @@ import MessageBoardPage from './components/FunctionalComponents/MessageBoardPage
 import MessagePage from './components/FunctionalComponents/MessagePage';
 import SchedulePage from './components/FunctionalComponents/SchedulePage';
 import { getGroups } from './store/group';
+import { getInvites } from './store/invite';
 import './App.css';
 
 function App() {
@@ -18,9 +19,10 @@ function App() {
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser())
-      .then(user => {
+      .then(async user => {
         if (user) {
-          return dispatch(getGroups());
+          await dispatch(getGroups());
+          return dispatch(getInvites());
         }
         return;
       })

@@ -27,12 +27,12 @@ function ProfileButton({ user }) {
   }
 
   return (
-    <>
-      <button onClick={() => setShowMenu(true)}>
+    <div className={'nav__profile'}>
+      <button  onClick={() => setShowMenu(true)}>
         <i className='fas fa-user' />
       </button>
       {showMenu && (
-        <ul className='profile-dropdown'>
+        <ul className='profile__dropdown'>
           <li>{user.username}</li>
           <li>{user.email}</li>
           <li>
@@ -40,7 +40,7 @@ function ProfileButton({ user }) {
           </li>
         </ul>
       )}
-    </>
+    </div>
   );
 }
 
