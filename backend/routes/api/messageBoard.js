@@ -26,7 +26,7 @@ router.post('/', restoreUser, validateMessage, asyncHandler(async (req, res) => 
     return res.status(403).end();
   }
   const postedMessage = await MessageBoard.create({ userId: user.id, groupId, message, title });
-  res.json({message: postedMessage});
+  res.json({message: postedMessage, username: user.username});
 }));
 
 router.get('/:groupId(\\d+)', restoreUser, asyncHandler(async (req, res) => {

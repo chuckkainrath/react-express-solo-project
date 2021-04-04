@@ -125,7 +125,7 @@ export const createMessage = ({groupIdx, groupId, message, title}) => async disp
     groupId: msgRes.message.groupId,
     title: msgRes.message.title,
     message: msgRes.message.message,
-    username: msgRes.message.username,
+    username: msgRes.username,
   };
   dispatch(createMessageAction(newMsg, groupIdx));
 }
