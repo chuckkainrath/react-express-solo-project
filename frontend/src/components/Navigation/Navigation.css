@@ -1,3 +1,185 @@
-a {
-  margin: 0 20px;
+.nav__bar {
+  width: 100%;
+  display: grid;
+  height: 40px;
+  grid-template-columns: 1fr 8fr 1fr;
+  grid-template-areas:
+    "home . profile";
+}
+
+.nav__profile {
+  grid-area: profile;
+}
+
+.nav__profile > button {
+  font-size: 2.0rem;
+  border: none;
+  color: gray;
+}
+
+.nav__profile > button:focus, .invite__btn {
+  outline: none;
+  box-shadow: none;
+}
+
+.profile__dropdown {
+  box-shadow: 0px 0px 1px 2px #ccc;
+  background-color: white;
+  list-style-type: none;
+  position: absolute;
+  padding-left: 0;
+  z-index: 1;
+}
+
+.profile__dropdown li {
+  font-size: 1.2rem;
+}
+
+.profile__btn, .group__create, .invite__btn {
+  background-color: rgb(245, 242, 233);
+}
+
+.invite__div {
+  grid-area: home;
+  margin-left: 140px;
+}
+
+.invite__btn {
+  border: none;
+  font-size: 2.4rem;
+  position: relative;
+}
+
+.invite__count {
+  position: absolute;
+  color: #ff9966;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 28%;
+  font-size: 1rem;
+}
+
+.home__div {
+  grid-area: home;
+  margin-top: 3.5px;
+}
+
+.home__icon {
+  font-size: 2.0rem;
+  text-decoration: none;
+  margin-left: 20px;
+}
+
+.home__icon:visited {
+  /* color: gray; */
+}
+
+.group__create {
+  border: none;
+  text-decoration: none;
+  position: relative;
+  top: 0;
+  color: gray;
+  font-size: 2.3rem;
+}
+
+
+
+.group__create:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.create-group__container {
+  position: absolute;
+  z-index: 100;
+  margin-top: 5px;
+  margin-left: 8px;
+}
+
+.create-group__container input {
+  font-size: 1.3rem;
+  width: 300px;
+}
+
+.create-group__container button {
+  margin-top: 5px;
+  font-size: 1.2rem;
+}
+
+.group-create__wrapper {
+  grid-area: home;
+  margin-left: 80px;
+  position: relative;
+}
+
+.sign-in__btn {
+  grid-area: profile;
+  width: fit-content;
+  border: none;
+  display: inline-block;
+  margin-left: 40px;
+  font-size: 1.3rem;
+}
+
+.sign-up__link {
+  text-decoration: none;
+  grid-area: profile;
+  font-size: 1.3rem;
+  display: inline-block;
+  margin-right: 40px;
+}
+
+.sign-up__link:visited {
+  color: black;
+}
+
+.inv__list {
+  list-style-type: none;
+  padding-left: 0;
+  width: 100%;
+  margin: 0;
+}
+
+.inv__div {
+  position: absolute;
+  width: 300px;
+  z-index: 10;
+  background-color: #f5ece9;
+  margin-top: -6px;
+  margin-left: 10px;
+  box-shadow: 0px 0px 1px 2px #ccc;
+  border-radius: 2px
+}
+
+.inv__list li {
+  padding: 5px 0 5px 5px;
+  font-size: 1.2rem;
+}
+
+.inv__list li:hover, .inv__list li:hover .inv-btn__container button {
+  background-color: #f2f5e9;
+}
+
+.inv-btn__container {
+  float: right;
+}
+
+.inv-btn__container button {
+  border: none;
+  margin-right: 5px;
+  background-color: #f5ece9;
+}
+
+.inv-btn__container button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.inv__accept:hover {
+  color: green;
+}
+
+.inv__decline:hover {
+  color: red;
 }

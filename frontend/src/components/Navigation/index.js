@@ -4,11 +4,14 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
 import GroupCreate from '../MainComponents/GroupCreate';
+import InviteDropdown from '../MainComponents/InviteDropdown';
 import './Navigation.css';
 
 function Navigation({ isLoaded }) {
   const sessionUser = useSelector(state => state.session.user);
   const [createGrp, toggleCreateGrp] = useState(false);
+  const invites = useSelector(state => state.invite.invites);
+  const [showInvites, toggleShowInvites] = useState(false);
 
   let sessionLinks;
   if (sessionUser) {
@@ -19,22 +22,40 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <>
         <LoginFormModal />
-        <NavLink to='/signup'>Sign Up</NavLink>
+        <NavLink className='sign-up__link' to='/signup'>Sign Up</NavLink>
       </>
     );
   }
 
+  const groupClick = () => {
+    toggleCreateGrp(!createGrp);
+    toggleShowInvites(false);
+  }
+
+  const inviteClick = () => {
+    toggleShowInvites(!showInvites)
+    toggleCreateGrp(false);
+  }
+
   return (
-    <>
-      <ul>
-        <li>
-          <NavLink exact to='/'>Home</NavLink>
-          {sessionUser && <button onClick={() => toggleCreateGrp(!createGrp)}>Create a Group</button>}
-          {isLoaded && sessionLinks}
-        </li>
-      </ul>
-      {createGrp && <GroupCreate />}
-    </>
+    <div className='nav__bar'>
+      <div className='home__div'>
+        <NavLink className='home__icon' exact to='/'><i class="fas fa-home-lg-alt"></i></NavLink>
+      </div>
+      {isLoaded && sessionLinks}
+      <div className='group-create__wrapper'>
+        {sessionUser && <button className='group__create' onClick={groupClick}><i class="fas fa-plus-square"></i></button>}
+        {createGrp && sessionUser && <GroupCreate toggleCreateGrp={toggleCreateGrp} />}
+      </div>
+      <div className='invite__div'>
+        {sessionUser && <button className='invite__btn' onClick={inviteClick}>
+          <i class="fas fa-inbox">
+            {invites.length > 0 && <span className='invite__count'>{invites.length}</span>}
+          </i>
+        </button>}
+        {showInvites && sessionUser && invites.length > 0 && <InviteDropdown invites={invites} />}
+      </div>
+    </div>
   );
 }
 

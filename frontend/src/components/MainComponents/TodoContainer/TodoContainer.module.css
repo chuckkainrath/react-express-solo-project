@@ -1,4 +1,4 @@
-.messages__container {
+.todo__container {
   width: 40%;
   height: 500px;
   box-shadow: 0px 0px 1px 2px #ccc;
@@ -18,30 +18,32 @@
   border-bottom: 1px solid gray;
 }
 
-.content__container {
+.tasks__container {
   overflow: auto;
-  height: 100%;
-}
-
-.message__container {
-  border-bottom: 1px solid gray;
   width: 80%;
   margin: 0 auto;
 }
 
-.message__container h2 {
-  font-weight: normal;
-  font-size: 1.3rem;
-  margin-bottom: 5px;
-  padding-left: 5px;
+.content__container {
+  border-bottom: 1px solid gray;
 }
 
-.message__container p {
-  margin-top: 0;
-  margin-bottom: 10px;
-  padding-left: 5px;
-  height: 1.6rem;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.content__list {
+  list-style-type: none;
+  padding-left: 10px;
+  margin-bottom: 20px;
+}
+
+.content__list li {
+  margin-bottom: 5px;
+}
+
+.content__title {
+  font-weight: normal;
+  font-size: 1.3rem;
+  text-align: center;
+}
+
+.tasks__none {
+  text-align: center;
 }
