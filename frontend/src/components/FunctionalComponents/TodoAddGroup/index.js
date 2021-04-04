@@ -28,7 +28,7 @@ function TodoAddGroup() {
   }
 
   return (
-    <div className={styles.add_group}>
+    <div className={styles.add__group}>
       <h1 className={styles.title}>Add a New Group</h1>
       <input
         name='add-group'
