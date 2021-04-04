@@ -19,7 +19,7 @@ function MessagePage() {
       <OptionsBar />
       <div className={styles.page__container}>
         { user.id === message.userId &&
-          <button className={styles.page__edit} onClick={() => toggleEditMsg(!editMsg)}>Edit</button> }
+          <button className={styles.page__edit} onClick={() => toggleEditMsg(!editMsg)}>{editMsg ? 'Cancel' : 'Edit'}</button> }
         {editMsg && <MessageCreate toggleEditMsg={toggleEditMsg} messageId={message.id} oldTitle={message.title} oldMessage={message.message} />}
         {!editMsg &&
           <div className={styles.msg__info}>
