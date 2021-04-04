@@ -1,1 +1,11 @@
-/* TODO Add site wide styles */
+/* @import-normalize; */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+body, html {
+  background-color: rgb(245, 242, 233);
+  height: 100%;
+}
+
+body, input, button, textarea, span {
+  font-family: 'Roboto', 'sans-serif';
+}

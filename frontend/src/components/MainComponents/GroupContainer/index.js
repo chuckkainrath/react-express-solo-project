@@ -1,6 +1,7 @@
 import { useHistory } from 'react-router-dom';
 import TodoContainer from '../TodoContainer';
 import MessageBoardContainer from '../MessageBoardContainer';
+import styles from './GroupContainer.module.css';
 
 function GroupContainer({ groupObj, groupIdx }) {
   const history = useHistory();
@@ -9,10 +10,12 @@ function GroupContainer({ groupObj, groupIdx }) {
     history.push(path);
   }
   return (
-    <div className='group__container' onClick={redirectToGroup}>
-      <h1>{groupObj.group.name}</h1>
-      <TodoContainer todoGroups={groupObj.todoGroups} todoItems={groupObj.todoItems} />
-      <MessageBoardContainer messageBoards={groupObj.messageBoards} messageReplies={groupObj.messageReplies}/>
+    <div className={styles.group__container} onClick={redirectToGroup}>
+      <h1 className={styles.group__title}>{groupObj.group.name}</h1>
+      <div className={styles.content__container}>
+        <TodoContainer groupIdx={groupIdx} />
+        <MessageBoardContainer messageBoards={groupObj.messageBoards} messageReplies={groupObj.messageReplies}/>
+      </div>
     </div>
   );
 }

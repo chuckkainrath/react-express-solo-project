@@ -11,7 +11,7 @@ label {
   width: 90%;
   position: relative;
   margin: 0 auto 40px auto;
-  border: 1px solid black;
+  box-shadow: 0px 0px 1px 2px #ccc;
   border-radius: 2px;
   padding: 15px;
 }
@@ -26,7 +26,7 @@ label {
 .create__message textarea {
   display: block;
   height: 12rem;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   width: 99.5%;
   resize: none;
 }
@@ -40,9 +40,9 @@ label {
 }
 
 .create__btn, .submit__btn {
-  padding: 10px;
-  border-radius:5px;
+  padding: 6px;
   text-decoration: none;
+  font-size: 1.2rem;
 }
 
 .create__btn:focus, .submit__btn:focus {

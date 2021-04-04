@@ -2,6 +2,7 @@ import { csrfFetch } from './csrf';
 import { flattenGroups } from './utils';
 import cloneDeep from 'clone-deep';
 
+const GROUP_INSERT = 'GROUP_INSERT';
 const GROUPS_EMPTY = 'GROUPS_EMPTY';
 const GROUP_CREATE = 'GROUP_CREATE';
 const GROUP_GET_ALL = 'GROUP_GET_ALL';
@@ -84,6 +85,14 @@ const deleteTaskAction = (task, groupIdx) => ({
   task,
   groupIdx
 });
+
+export const insertGroup = group => {
+  const flattenedGroup = flattenGroups([group]);
+  return {
+    type: GROUP_INSERT,
+    group: flattenedGroup
+  }
+}
 
 export const editMessage = ({groupIdx, messageId, message, title}) => async dispatch => {
   const options = {
@@ -169,7 +178,7 @@ export const createGroup = ({ groupName }) => async dispatch => {
 export const getGroups = () => async dispatch => {
   const res = await csrfFetch('/api/groups');
   const groupsRes = await res.json();
-  const groups = flattenGroups(groupsRes);
+  const groups = flattenGroups(groupsRes.allGroupData);
   dispatch(getGroupsAction(groups));
   return groups;
 }
@@ -252,6 +261,16 @@ const initialState = {
 const groupReducer = (state = initialState, action) => {
   let newState, todoGroups, taskGroupIdx, itemGroup, item, msgReplies;
   switch (action.type) {
+    case GROUP_INSERT:
+      newState = cloneDeep(state);
+      const newGrp = action.group;
+      newState.groups.push(newGrp.groups[0]);
+      newState.schedules.push(newGrp.schedules[0]);
+      newState.messageBoards.push(newGrp.messageBoards[0]);
+      newState.messageReplies.push(newGrp.messageReplies[0]);
+      newState.todoGroups.push(newGrp.todoGroups[0]);
+      newState.todoItems.push(newGrp.todoItems[0]);
+      return newState;
     case GROUPS_EMPTY:
       newState = cloneDeep(initialState);
       return newState;

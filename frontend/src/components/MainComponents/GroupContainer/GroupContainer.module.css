@@ -1,34 +1,29 @@
-.todo_page__container {
+.group__container {
   width: 50%;
-  margin: -150px auto 20px auto;
+  margin: 30px auto;
   position: relative;
-  z-index: 100;
   box-shadow: 0px 0px 1px 2px #ccc;
   padding: 20px 40px 50px 40px;
   border-radius: 2px;
   background-color: white;
+  height: 600px;
+  overflow: hidden;
 }
 
-.title {
+.group__title {
+  width: 90%;
   text-align: center;
+  margin: 10px auto;
   padding-bottom: 10px;
   border-bottom: 1px solid gray;
 }
 
-.container {
-  position: relative;
+.content__container {
   margin: 0 auto;
   width: 90%;
   display: flex;
-  flex-flow: row wrap;
+  flex-flow: row nowrap;
+  gap: 10%;
   justify-content: space-evenly;
-  gap: 5%;
-}
-
-.add_group {
-  margin-top: 50px;
-}
-
-.page__container {
-  margin-top: 20px;
+  margin-top: 30px;
 }

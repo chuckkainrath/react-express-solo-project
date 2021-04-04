@@ -2,6 +2,7 @@
   width: 40%;
   height: 500px;
   box-shadow: 0px 0px 1px 2px #ccc;
+
   padding: 10px;
   border-radius: 2px;
   overflow: hidden;
@@ -17,6 +18,7 @@
   text-align: center;
   border-bottom: 1px solid gray;
 }
+
 
 .content__container {
   overflow: auto;

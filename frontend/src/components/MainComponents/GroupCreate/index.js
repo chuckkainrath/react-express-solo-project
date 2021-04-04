@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { createGroup } from '../../../store/group';
 
-function GroupCreate() {
+function GroupCreate({toggleCreateGrp}) {
   const dispatch = useDispatch();
   const history = useHistory();
   const [name, setName] = useState('')
@@ -23,19 +23,17 @@ function GroupCreate() {
   const submitGroup = async () => {
     const groupLen = groups.length;
     await dispatch(createGroup({groupName: name}));
+    toggleCreateGrp(false);
     history.push(`/groups/${groupLen}`);
   }
 
   return (
-    <div>
-      <h1>Create a Group</h1>
-      <label>
-        <input
-          value={name}
-          placeholder='Group name...'
-          onChange={nameChange}
-        />
-      </label>
+    <div className='create-group__container'>
+      <input
+        value={name}
+        placeholder='Group name...'
+        onChange={nameChange}
+      />
       <button disabled={btnDisable} onClick={submitGroup}>Create Group</button>
     </div>
   );
