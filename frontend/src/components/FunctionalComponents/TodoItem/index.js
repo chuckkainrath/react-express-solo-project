@@ -27,8 +27,8 @@ function TodoItem({item}) {
         onChange={completeClicked}
       /> */}
       <div className={styles.task__options}>
-        <i onClick={deleteItem} class="fas fa-trash-alt"></i>
-        {completed && <i class="fal fa-check-square" onClick={completeClicked}></i>}
+        <span className={styles.garbage}><i onClick={deleteItem} class="fas fa-trash-alt"></i></span>
+        {completed && <span className={styles.complete}><i class="fal fa-check-square" onClick={completeClicked}></i></span>}
         {!completed && <i class="fal fa-square" onClick={completeClicked}></i>}
       </div>
       <div className={styles.task}>{item.task}</div>

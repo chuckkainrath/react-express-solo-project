@@ -1,4 +1,13 @@
-.add_group {
+.add__group {
   margin: 50px auto 100px auto;
   width: fit-content;
+}
+
+.title {
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.add__group input, .add__group button {
+  font-size: 1.3rem;
 }
