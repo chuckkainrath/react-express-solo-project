@@ -16,7 +16,7 @@ function TodoGroupContainer({ todoGroupIdx }) {
   }
 
   return (
-    <div className={styles.group_container}>
+    <div className={styles.group__container}>
       <h1 className={styles.title}>{todoGroup.title}</h1>
       <ul className='item__container'>
         {todoItems.map((item, idx) => {

@@ -4,6 +4,8 @@
   width: fit-content;
 }
 
-.todo_item__add input {
-  width: 60%;
+.todo_item__add input, .todo_item__add button{
+  font-size: 1.2rem;
 }
+
+
