@@ -11,7 +11,7 @@ function GroupPage() {
   const group = useSelector(state => state.group.groups[groupIdx]);
 
   return (
-    <>
+    <div className={styles.page__container}>
       <OptionsBar />
       <div className={styles.group__container}>
         <InviteComponent />
@@ -21,7 +21,7 @@ function GroupPage() {
           <MessageBoardContainer />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

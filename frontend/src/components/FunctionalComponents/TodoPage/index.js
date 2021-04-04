@@ -10,7 +10,7 @@ function TodoPage() {
   const todoGroups = useSelector(state => state.group.todoGroups[groupIdx]);
 
   return (
-    <>
+    <div className={styles.page__container}>
       <OptionsBar />
       <div className={styles.todo_page__container}>
         <h1 className={styles.title}>Todo List</h1>
@@ -21,7 +21,7 @@ function TodoPage() {
         </div>
         <TodoAddGroup />
       </div>
-    </>
+    </div>
   );
 }
 

@@ -11,7 +11,7 @@ function MessageBoardPage() {
   const messages = useSelector(state => state.group.messageBoards[groupIdx]);
 
   return (
-    <>
+    <div className={styles.page__container}>
       <OptionsBar />
       <div className={styles.board_container}>
         <h1 className={styles.board_title}>Message Board</h1>
@@ -20,7 +20,7 @@ function MessageBoardPage() {
           return <MessageGlimpse key={msg.id} messageIdx={idx} />
         })}
       </div>
-    </>
+    </div>
   );
 }
 
