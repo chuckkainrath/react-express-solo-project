@@ -7,6 +7,7 @@ function InviteDropdown({invites}) {
   const dispatch = useDispatch();
   const history = useHistory();
   const groups = useSelector(state => state.group.groups);
+  const user = useSelector(state => state.session.user);
   const handleInv = async (inviteIdx, accept, inviteId) => {
     const groupData = await dispatch(processInvite({accept, inviteIdx, inviteId}));
     if (accept) {
@@ -18,7 +19,7 @@ function InviteDropdown({invites}) {
   return (
     <div className='inv__div'>
       <ul className='inv__list'>
-        {invites && invites.map((inv, idx) => {
+        {user && invites && invites.map((inv, idx) => {
           return (
             <li key={idx}>
               <span>{inv.groupName}</span>
