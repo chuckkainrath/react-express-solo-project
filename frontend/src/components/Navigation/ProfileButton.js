@@ -25,7 +25,7 @@ function ProfileButton({ user }) {
     e.preventDefault();
     await dispatch(sessionActions.logout());
     // dispatch(emptyGroups());
-    // dispatch(emptyInvites());
+    dispatch(emptyInvites());
     history.push('/');
   }
 
