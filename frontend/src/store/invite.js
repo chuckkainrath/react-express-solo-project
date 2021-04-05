@@ -4,6 +4,7 @@ import cloneDeep from 'clone-deep';
 
 const GET_INV = 'GET_INV';
 const REMOVE_INV = 'REMOVE_INV';
+const EMPTY_INV = 'EMPTY_INV';
 
 const getInvitesAction = invites => ({
   type: GET_INV,
@@ -13,6 +14,10 @@ const getInvitesAction = invites => ({
 const removeInviteAction = inviteIdx => ({
   type: REMOVE_INV,
   inviteIdx
+});
+
+export const emptyInvites = () => ({
+  type: EMPTY_INV
 });
 
 export const processInvite = ({accept, inviteId, inviteIdx}) => async dispatch => {
@@ -68,6 +73,9 @@ const inviteReducer = (state = initialState, action) => {
     case REMOVE_INV:
       newState = cloneDeep(state);
       newState.invites.splice(action.inviteIdx, 1);
+      return newState;
+    case EMPTY_INV:
+      newState = cloneDeep(initialState);
       return newState;
     default:
       return state;
