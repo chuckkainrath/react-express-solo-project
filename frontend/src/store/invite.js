@@ -51,7 +51,8 @@ export const sendInvite = ({credential, groupId}) => async () => {
     method: 'POST',
     body: JSON.stringify({email, username, groupId})
   }
-  await csrfFetch('/api/invites', options);
+  const res = await csrfFetch('/api/invites', options);
+  return (await res.json()).result;
 }
 
 const initialState = {
