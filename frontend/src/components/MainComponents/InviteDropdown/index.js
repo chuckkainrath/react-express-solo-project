@@ -1,4 +1,4 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { processInvite } from '../../../store/invite';
 import { insertGroup } from '../../../store/group';
@@ -6,10 +6,12 @@ import { insertGroup } from '../../../store/group';
 function InviteDropdown({invites}) {
   const dispatch = useDispatch();
   const history = useHistory();
+  const groups = useSelector(state => state.group.groups);
   const handleInv = async (inviteIdx, accept, inviteId) => {
     const groupData = await dispatch(processInvite({accept, inviteIdx, inviteId}));
     if (accept) {
       await dispatch(insertGroup(groupData));
+      history.push(`/groups/${groups.length}`);
     }
   }
 
