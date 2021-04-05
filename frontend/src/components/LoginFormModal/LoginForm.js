@@ -3,6 +3,7 @@ import * as sessionActions from '../../store/session';
 import { useDispatch } from 'react-redux';
 import { getGroups } from '../../store/group';
 import { getInvites } from '../../store/invite';
+import styles from './LoginForm.module.css';
 
 function LoginForm() {
   const dispatch = useDispatch();
@@ -13,6 +14,14 @@ function LoginForm() {
   const handleSubmit = e => {
     e.preventDefault();
     setErrors([]);
+    signInUser(credential, password)
+  }
+
+  const demoSignIn = () => {
+    signInUser('Demo-User', 'password');
+  }
+
+  const signInUser = (credential, password) => {
     return dispatch(sessionActions.login({ credential, password }))
       .then(() => dispatch(getGroups()))
       .then(() => dispatch(getInvites()))
@@ -23,29 +32,33 @@ function LoginForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className={styles.login__form} onSubmit={handleSubmit}>
+      <h1>Login</h1>
       <ul>
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
-      <label>
-        Username or Email
-        <input
-          type='text'
-          value={credential}
-          onChange={(e) => setCredential(e.target.value)}
-          required
-        />
-      </label>
-      <label>
-        Password
-        <input
-          type='password'
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-      </label>
-      <button type='submit'>Log In</button>
+      <div className={styles.login__div}>
+        <div className={styles.credential__div}>
+          <label>Username or Email</label>
+          <input
+            type='text'
+            value={credential}
+            onChange={(e) => setCredential(e.target.value)}
+            required
+          />
+        </div>
+        <div className={styles.password__div}>
+          <label>Password</label>
+          <input
+            type='password'
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+        <button className={styles.login__button} type='submit'>Sign In</button>
+        <p>or continue as <a href="#" onClick={demoSignIn}>Demo User</a></p>
+      </div>
     </form>
   );
 }

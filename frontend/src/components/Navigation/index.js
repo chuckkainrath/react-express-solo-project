@@ -22,7 +22,7 @@ function Navigation({ isLoaded }) {
     sessionLinks = (
       <>
         <LoginFormModal />
-        <NavLink className='sign-up__link' to='/signup'>Sign Up</NavLink>
+        <NavLink className='sign-up__link' to='/signup'><i class="fas fa-user-plus"></i></NavLink>
       </>
     );
   }
@@ -47,6 +47,7 @@ function Navigation({ isLoaded }) {
         {sessionUser && <button className='group__create' onClick={groupClick}><i class="fas fa-plus-square"></i></button>}
         {createGrp && sessionUser && <GroupCreate toggleCreateGrp={toggleCreateGrp} />}
       </div>
+      <div className='title'>Nexus</div>
       <div className='invite__div'>
         {sessionUser && <button className='invite__btn' onClick={inviteClick}>
           <i class="fas fa-inbox">

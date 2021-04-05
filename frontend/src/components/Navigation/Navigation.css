@@ -2,13 +2,20 @@
   width: 100%;
   display: grid;
   height: 40px;
+  position: relative;
   grid-template-columns: 1fr 8fr 1fr;
   grid-template-areas:
-    "home . profile";
+    "home title profile";
 }
 
 .nav__profile {
   grid-area: profile;
+  justify-self: right;
+  margin-right: 20px;
+}
+
+.nav__profile:hover i {
+  color: green;
 }
 
 .nav__profile > button {
@@ -24,19 +31,39 @@
 
 .profile__dropdown {
   box-shadow: 0px 0px 1px 2px #ccc;
+  border-radius: 3px;
   background-color: white;
   list-style-type: none;
   position: absolute;
-  padding-left: 0;
+  right: 10px;
+  padding: 5px;
+  text-align: center;
   z-index: 1;
+  background-color: #f2f5e9;
+}
+
+.profile__dropdown li, .profile__dropdown button {
+  font-size: 1.3rem;
 }
 
 .profile__dropdown li {
-  font-size: 1.2rem;
+  margin-top: 5px;
+}
+
+.profile__dropdown button {
+  border-radius: 3px;
+  background-color: #f2f5e9;
 }
 
 .profile__btn, .group__create, .invite__btn {
   background-color: rgb(245, 242, 233);
+}
+
+.title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3rem;
 }
 
 .invite__div {
@@ -64,14 +91,14 @@
   margin-top: 3.5px;
 }
 
+.home__div:hover i {
+  color: green;
+}
+
 .home__icon {
   font-size: 2.0rem;
   text-decoration: none;
   margin-left: 20px;
-}
-
-.home__icon:visited {
-  /* color: gray; */
 }
 
 .group__create {
@@ -83,7 +110,9 @@
   font-size: 2.3rem;
 }
 
-
+.group__create:hover i {
+  color: green;
+}
 
 .group__create:focus {
   outline: none;
@@ -123,11 +152,15 @@
 }
 
 .sign-up__link {
-  text-decoration: none;
   grid-area: profile;
-  font-size: 1.3rem;
-  display: inline-block;
-  margin-right: 40px;
+  font-size: 2rem;
+  justify-self: right;
+  margin-right: 90px;
+  margin-top: 3px;
+}
+
+.sign-up__link:hover i {
+  color: green;
 }
 
 .sign-up__link:visited {
@@ -150,6 +183,10 @@
   margin-left: 10px;
   box-shadow: 0px 0px 1px 2px #ccc;
   border-radius: 2px
+}
+
+.invite__btn:hover i {
+  color: green;
 }
 
 .inv__list li {

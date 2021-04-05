@@ -1,0 +1,90 @@
+.login__btn {
+  grid-area: profile;
+  font-size: 2.5rem;
+  width: fit-content;
+  padding: 0 10px;
+  justify-self: right;
+  margin-right: 10px;
+  border: none;
+}
+
+.login__btn:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+.login__btn:hover i {
+  color: green;
+}
+
+.login__form {
+  height: 400px;
+  width: 400px;
+  margin-top: 0;
+}
+
+.login__form input {
+  font-size: 1.3rem;
+}
+
+.login__div {
+  width: 90%;
+  position: absolute;
+  top: 30%;
+  transform: translateY(-50%);
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.credential__div {
+  width: 80%;
+  position: relative;
+  left: 60%;
+  transform: translateX(-50%);
+  margin-bottom: 20px;
+}
+
+.password__div {
+  width: 80%;
+  position: relative;
+  left: 60%;
+  transform: translateX(-50%);
+}
+
+.login__button {
+  width: fit-content;
+  font-size: 1.3rem;
+  position: relative;
+  margin-top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.login__div p {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.login__div a {
+  text-decoration: none;
+  color: black;
+}
+
+.login__div a:visited {
+  color: black;
+}
+
+.login__div a:hover {
+  color: green;
+}
+
+.login__form h1 {
+  text-align: center;
+}
+
+.login__form ul {
+  list-style-type: none;
+  padding-left: none;
+  color: red;
+  font-size: 1.2rem;
+}
