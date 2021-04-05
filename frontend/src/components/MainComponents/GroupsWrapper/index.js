@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getGroups } from '../../../store/group';
 import GroupContainer from '../GroupContainer';
+import styles from './GroupsWrapper.module.css';
 
 const wrapGroup = (allGroups, idx) => {
   return {
@@ -17,6 +18,7 @@ const wrapGroup = (allGroups, idx) => {
 function GroupsWrapper() {
   const dispatch = useDispatch();
   const groupsObj = useSelector(state => state.group);
+  const user = useSelector(state => state.session.user);
   const groups = groupsObj.groups;
 
   useEffect(() => {
@@ -24,11 +26,19 @@ function GroupsWrapper() {
   }, [dispatch]);
 
   return (
-    <div className='groups__container'>
-      {groups.map((_, idx) => {
-        return <GroupContainer key={idx} groupIdx={idx} groupObj={wrapGroup(groupsObj, idx)} />
-      })}
-    </div>
+    <>
+      {!user && (
+        <h1 className={styles.no_group}>Login or signup to start accessing groups</h1>
+      )}
+      {user && groups.length === 0 && (
+        <h1 className={styles.no_group}>Create a group or get invited to a group to get started</h1>
+      )}
+      <div className='groups__container'>
+        {groups.map((_, idx) => {
+          return <GroupContainer key={idx} groupIdx={idx} groupObj={wrapGroup(groupsObj, idx)} />
+        })}
+      </div>
+    </>
   );
 }
 
