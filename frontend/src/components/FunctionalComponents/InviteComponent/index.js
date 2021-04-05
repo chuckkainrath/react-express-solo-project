@@ -12,6 +12,7 @@ function InviteComponent() {
   const [showInv, toggleShowInv] = useState(false);
   const [submitInv, setSubmitInv] = useState(false);
   const [invitedUser, setInvitedUser] = useState('');
+  const [inviteRes, setInviteRes] = useState('');
 
   const invChanged = e => {
     const newInv = e.target.value;
@@ -24,10 +25,18 @@ function InviteComponent() {
   }
 
   const sendInv = async () => {
-    await dispatch(sendInvite({
+    const result = await dispatch(sendInvite({
       credential: invitedUser,
       groupId: group.id,
     }));
+    if (result === 'User In Group') {
+      setInviteRes('The User is already in this group');
+    } else if (result === 'User Not Found') {
+      setInviteRes('The User does not exist');
+    } else if (result === 'Invite Sent') {
+      setInviteRes('Invent Sent');
+    }
+    setTimeout(() => setInviteRes(''), 3000);
     toggleShowInv(false);
     setSubmitInv(false);
     setInvitedUser('');
@@ -35,6 +44,7 @@ function InviteComponent() {
 
   return (
     <div className={styles.invite__container}>
+      {inviteRes && <div className={styles.invite__result}>{inviteRes}</div>}
       <button
         className={styles.invite__button}
         onClick={() => toggleShowInv(!showInv)}>
