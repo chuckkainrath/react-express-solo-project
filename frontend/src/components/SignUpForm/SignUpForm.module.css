@@ -1,0 +1,64 @@
+.signup__form {
+  width: 50%;
+  margin: 200px auto 0 auto;
+}
+
+.signup__form input, .signup__form button {
+  font-size: 1.2rem;
+}
+
+.signup__form input {
+  width: 100%;
+}
+
+label {
+  display: block;
+}
+
+.signup__data {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.signup__data div {
+  margin: 20px 0;
+}
+
+.signup__data button {
+  display: block;
+  width: fit-content;
+  position: relative;
+  margin: 0 auto;
+  padding: 5px 10px;
+}
+
+.signup__form h1 {
+  text-align: center;
+  font-weight: normal;
+}
+
+.signup__form ul {
+  list-style-type: none;
+  padding-left: 0;
+  color: red;
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.signup__form p {
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.signup__form a {
+  text-decoration: none;
+  color: black;
+}
+
+.signup__form a:visited {
+  color: black;
+}
+
+.signup__form a:hover {
+  color: green;
+}
