@@ -29,12 +29,12 @@ router.post('/', restoreUser, asyncHandler(async (req, res) => {
   const userId = req.user.id;
   const { email, username, groupId } = req.body;
 
-  // Check if user is owner of group
+  // Check if group exists
   const group = await Group.findByPk(groupId);
   if (!group) {
     return res.status(404).end();
   }
-  // else if (group.ownerId !== userId) {
+  // else if (group.ownerId !== userId) {  // Checking if user is group owner.
   //   return res.status(403).end();
   // }
 
@@ -50,17 +50,17 @@ router.post('/', restoreUser, asyncHandler(async (req, res) => {
     invitedUser = await User.findOne({ where: { username }});
   }
   if (!invitedUser) {
-    return res.status(404).end();
+    return res.json({result: 'User Not Found'});
   }
 
   // Check if user is already in group.
   const invitedUserGroup = await UserGroup.findOne( {where: { userId: invitedUser.id, groupId }});
   if (invitedUserGroup) {
-    return res.status(400).end(); // Correct status code?
+    return res.json({result: 'User In Group'});
   }
 
   await Invitation.create({userId: invitedUser.id, groupId});
-  res.json();
+  res.json({result: 'Invite Sent'});
 }));
 
 router.delete('/:inviteId', restoreUser, asyncHandler(async (req, res) => {
