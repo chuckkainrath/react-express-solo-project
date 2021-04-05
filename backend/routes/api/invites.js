@@ -91,7 +91,7 @@ router.delete('/:inviteId', restoreUser, asyncHandler(async (req, res) => {
           {model: MessageReply, include: [{model: User, attributes: ['username']}]}]}],
       order: [
         ['createdAt', 'ASC'],
-        [TodoGroup, 'createdAt', 'DESC'],
+        [TodoGroup, 'createdAt', 'ASC'],
         [TodoGroup, TodoItem, 'createdAt', 'ASC'],
         [MessageBoard, 'createdAt', 'DESC'],
         [MessageBoard, MessageReply, 'createdAt', 'ASC'],
