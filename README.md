@@ -28,21 +28,21 @@ npm install
 npm start
 ```
 
-## Features
+# Features
 
-# Groups
+## Groups
 Users can create groups and invite others to groups.
 
 ![Group Create](https://drive.google.com/uc?export=view&id=10HzzJqF9OGAAKDwhQm2grytClU163Tr4)
 ![Group Invite](https://drive.google.com/uc?export=view&id=1QUsZSR0ZxyuqloNSJdpDPgFUGf_NvtRl)
 
-# Messages
+## Messages
 Users can create messages in a group.  Messages can then be replied to.  All messages/replies can be edited and deleted.
 
 ![Messages](https://drive.google.com/uc?export=view&id=1Wy7U9rgfIIbAsNJbc6GfltfdGZOzf05u)
 ![Replies](https://drive.google.com/uc?export=view&id=1RI7TtBFRKUnuOIr9TySPUm4l2JQ1yYS5)
 
-# Todo
+## Todo
 
 Users can can create todo groups in a group.  Tasks then can be added to the todo groups.  Tasks can be marked as completed/incomplete and can be deleted.
 
