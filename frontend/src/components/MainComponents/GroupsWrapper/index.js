@@ -6,6 +6,7 @@ import { Modal } from '../../../context/Modal';
 import LoginForm from '../../LoginFormModal/LoginForm';
 import GroupContainer from '../GroupContainer';
 import styles from './GroupsWrapper.module.css';
+import projectImage from './project.png';
 
 const wrapGroup = (allGroups, idx) => {
   return {
@@ -38,12 +39,14 @@ function GroupsWrapper() {
           <h1>
             <span tabindex='1' className={styles.authorize} onClick={() => setShowModal(true)}>Login</span>
             {'  '}or{'  '}
-            <span tabindex='1' onClick={() => history.push('/signup')} className={styles.authorize}>Signup</span> to start accessing groups</h1>
-            {showModal && (
+            <span tabindex='1' onClick={() => history.push('/signup')} className={styles.authorize}>Signup</span> to start accessing groups
+          </h1>
+          <img src={projectImage} />
+          {showModal && (
             <Modal onClose={() => setShowModal(false) }>
               <LoginForm />
             </Modal>
-      )}
+          )}
         </div>
       )}
       {user && groups.length === 0 && (
