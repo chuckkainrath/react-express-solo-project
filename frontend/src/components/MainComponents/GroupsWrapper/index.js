@@ -28,7 +28,10 @@ function GroupsWrapper() {
   return (
     <>
       {!user && (
-        <h1 className={styles.no_group}>Login or signup to start accessing groups</h1>
+        <div className={styles.unauthorized}>
+          <h1>Welcome to Nexus, a group project management application</h1>
+          <h1><span tabindex='1' className={styles.authorize}>Login</span> or <span tabindex='1' className={styles.authorize}>Signup</span> to start accessing groups</h1>
+        </div>
       )}
       {user && groups.length === 0 && (
         <h1 className={styles.no_group}>Create a group or get invited to a group to get started</h1>
