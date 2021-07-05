@@ -15,11 +15,6 @@ function MessageGlimpse({ messageIdx }) {
         <span className={styles.msg__user}>{message.username} - </span>
         <span className={styles.msg__content}>{message.message}</span>
       </h2>
-      {/* <ul>
-      {replies.map(reply => {
-        return <li key={reply.id}>{reply.reply}</li>
-      })}
-      </ul> */}
     </div>
   );
 }
