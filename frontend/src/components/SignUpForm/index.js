@@ -1,13 +1,15 @@
 import { useState } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getGroups } from '../../store/group';
 import { getInvites } from '../../store/invite';
+import LoginFormModal from '../LoginFormModal';
 import * as sessionActions from '../../store/session';
 import styles from './SignUpForm.module.css';
 
 function SignUpForm() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const sessionUser = useSelector(state => state.session.user);
 
   const [username, setUsername] = useState('');

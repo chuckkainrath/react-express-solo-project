@@ -9,3 +9,11 @@ body, html {
 body, input, button, textarea, span {
   font-family: 'Roboto', 'sans-serif';
 }
+
+i {
+  color: #095E71 !important;
+}
+
+i:hover {
+  color: #052F39 !important;
+}

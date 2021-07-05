@@ -10,7 +10,7 @@
 .authorize {
   display: inline-block;
   font-weight: bold;
-  color: red;
+  color: #095E71;
   transition: transform 0.2s;
 }
 
