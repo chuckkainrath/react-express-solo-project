@@ -1,6 +1,10 @@
 .signup__form {
-  width: 50%;
-  margin: 200px auto 0 auto;
+  padding: 20px 80px;
+  box-shadow: 0 0 2px 2px rgb(122, 121, 121);
+  border-radius: 5px;
+  width: fit-content;
+  margin: 150px auto 0 auto;
+  background-color: #F9F8F1;
 }
 
 .signup__form input, .signup__form button {
@@ -60,5 +64,5 @@ label {
 }
 
 .signup__form a:hover {
-  color: green;
+  color: #095E71;
 }
