@@ -3,7 +3,7 @@ import { Redirect, useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getGroups } from '../../store/group';
 import { getInvites } from '../../store/invite';
-import LoginFormModal from '../LoginFormModal';
+import { Button } from 'react-bootstrap';
 import * as sessionActions from '../../store/session';
 import styles from './SignUpForm.module.css';
 
@@ -87,8 +87,8 @@ function SignUpForm() {
             required
           />
         </div>
-        <button type='submit'>Sign Up</button>
-        <p>or continue as <a onClick={signinDemo} href="#">Demo User</a></p>
+        <Button type='submit'>Sign Up</Button>
+        <p className={styles.demo__login}>or continue as <a onClick={signinDemo} href="#">Demo User</a></p>
       </div>
     </form>
   );
