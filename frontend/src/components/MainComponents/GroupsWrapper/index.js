@@ -1,8 +1,12 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { getGroups } from '../../../store/group';
+import { Modal } from '../../../context/Modal';
+import LoginForm from '../../LoginFormModal/LoginForm';
 import GroupContainer from '../GroupContainer';
 import styles from './GroupsWrapper.module.css';
+import projectImage from './project.png';
 
 const wrapGroup = (allGroups, idx) => {
   return {
@@ -17,9 +21,11 @@ const wrapGroup = (allGroups, idx) => {
 
 function GroupsWrapper() {
   const dispatch = useDispatch();
+  const history = useHistory();
   const groupsObj = useSelector(state => state.group);
   const user = useSelector(state => state.session.user);
   const groups = groupsObj.groups;
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     dispatch(getGroups());
@@ -28,7 +34,20 @@ function GroupsWrapper() {
   return (
     <>
       {!user && (
-        <h1 className={styles.no_group}>Login or signup to start accessing groups</h1>
+        <div className={styles.unauthorized}>
+          <h1>Welcome to Nexus, a group project management application</h1>
+          <h1>
+            <span tabindex='1' className={styles.authorize} onClick={() => setShowModal(true)}>Login</span>
+            {'  '}or{'  '}
+            <span tabindex='1' onClick={() => history.push('/signup')} className={styles.authorize}>Signup</span> to start accessing groups
+          </h1>
+          <img src={projectImage} />
+          {showModal && (
+            <Modal onClose={() => setShowModal(false) }>
+              <LoginForm />
+            </Modal>
+          )}
+        </div>
       )}
       {user && groups.length === 0 && (
         <h1 className={styles.no_group}>Create a group or get invited to a group to get started</h1>

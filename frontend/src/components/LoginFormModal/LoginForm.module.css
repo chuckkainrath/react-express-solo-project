@@ -6,6 +6,7 @@
   justify-self: right;
   margin-right: 10px;
   border: none;
+  background-color: transparent;
 }
 
 .login__btn:focus {

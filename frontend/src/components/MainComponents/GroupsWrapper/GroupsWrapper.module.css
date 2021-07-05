@@ -1,4 +1,19 @@
-.no_group {
+.unauthorized {
+  width: fit-content;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
   text-align: center;
-  margin-top: 300px;
+  top: 10%;
+}
+
+.authorize {
+  display: inline-block;
+  font-weight: bold;
+  color: #095E71;
+  transition: transform 0.2s;
+}
+
+.authorize:hover {
+  transform: scale(1.1);
 }
