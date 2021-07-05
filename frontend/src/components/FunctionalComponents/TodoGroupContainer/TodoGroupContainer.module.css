@@ -16,9 +16,16 @@
 
 .delete {
   font-size: 1.1rem;
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 20px;
+  position: relative;
+
+  margin: 20px auto 20px auto;
+  width: fit-content;
+  display: block;
+}
+
+.todo__flex {
+  height: 100%;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
 }
