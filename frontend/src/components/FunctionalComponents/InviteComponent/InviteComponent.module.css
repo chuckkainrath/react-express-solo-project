@@ -1,5 +1,5 @@
 .invite__container {
-  top: 45px;
+  top: 3.8%;
   position: absolute;
   font-size: 1.2rem;
   z-index: 100000;
@@ -9,10 +9,14 @@
   padding: 6px;
   font-size: 1.2rem;
   text-decoration: none;
+  position: absolute;
+  width: 120px;
 }
 
 .invite__dropdown {
-  margin-top: 13px;
+  position: absolute;
+  display: flex;
+  top: 5.7vh;
 }
 
 .invite__dropdown input, .invite__dropdown button {
@@ -20,15 +24,11 @@
 }
 
 .invite__result {
+  display: inline-block;
   position: absolute;
   z-index: 1000;
-  padding: 20px;
-  border-radius: 5px;
   font-size: 1.5rem;
-  background-color: rgb(245, 242, 233);
-  box-shadow: 0px 0px 1px 2px #ccc;
-  text-align: center;
-  width: 250px;
-  left: 230px;
-  top: -30px;
+  width: fit-content;
+  left: 7vw;
+  bottom: 2vh;
 }
