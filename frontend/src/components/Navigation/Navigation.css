@@ -66,6 +66,10 @@
   font-size: 3rem;
 }
 
+.title:hover {
+  cursor: pointer;
+}
+
 .invite__div {
   grid-area: home;
   margin-left: 140px;
