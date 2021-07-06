@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import * as sessionActions from '../../store/session';
 import { useHistory } from 'react-router-dom';
+import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { emptyGroups } from '../../store/group';
 import { emptyInvites } from '../../store/invite';
 
@@ -21,6 +22,8 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener('click', closeMenu);
   }, [showMenu]);
 
+  const profileTooltip = props => <Tooltip {...props} id='profile-tooltip'>User Menu</Tooltip>
+
   const logout = async e => {
     e.preventDefault();
     await dispatch(sessionActions.logout());
@@ -32,7 +35,13 @@ function ProfileButton({ user }) {
   return (
     <div className={'nav__profile'}>
         <button  className={'profile__btn'} onClick={() => setShowMenu(true)}>
-          <i className='fas fa-user' />
+          <OverlayTrigger
+            placement='left'
+            delay={{ show: 250, hide: 250 }}
+            overlay={profileTooltip}
+          >
+            <i className='fas fa-user' />
+          </OverlayTrigger>
         </button>
         {showMenu && (
           <ul className='profile__dropdown'>

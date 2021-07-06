@@ -18,6 +18,8 @@ function Navigation({ isLoaded }) {
   const homeTooltip = props => <Tooltip {...props} id='home-tooltip'>Home</Tooltip>
   const newAccountTooltip = props => <Tooltip {...props} id='new-tooltip'>Create an Account</Tooltip>
   const nexusTooltip = props => <Tooltip {...props} id='nexus-tooltip'>Home</Tooltip>
+  const groupTooltip = props => <Tooltip {...props} id='group-tooltip'>Create a Group</Tooltip>
+  const inviteTooltip = props => <Tooltip {...props} id='invite-tooltip'>Invites</Tooltip>
 
   let sessionLinks;
   if (sessionUser) {
@@ -54,7 +56,7 @@ function Navigation({ isLoaded }) {
     <div className='nav__bar'>
       <div className='home__div'>
         <OverlayTrigger
-          placement="right"
+          placement="bottom"
           delay={{ show: 250, hide: 250 }}
           overlay={homeTooltip}
         >
@@ -63,7 +65,17 @@ function Navigation({ isLoaded }) {
       </div>
       {isLoaded && sessionLinks}
       <div className='group-create__wrapper'>
-        {sessionUser && <button className='group__create' onClick={groupClick}><i class="fas fa-plus-square"></i></button>}
+        {sessionUser &&
+          <button className='group__create' onClick={groupClick}>
+            <OverlayTrigger
+              placement="bottom"
+              delay={{ show: 250, hide: 250 }}
+              overlay={groupTooltip}
+            >
+              <i class="fas fa-plus-square"></i>
+            </OverlayTrigger>
+          </button>
+        }
         {createGrp && sessionUser && <GroupCreate toggleCreateGrp={toggleCreateGrp} />}
       </div>
       <OverlayTrigger
@@ -75,9 +87,15 @@ function Navigation({ isLoaded }) {
       </OverlayTrigger>
       <div className='invite__div'>
         {sessionUser && <button className='invite__btn' onClick={inviteClick}>
-          <i class="fas fa-inbox">
-            {invites.length > 0 && <span className='invite__count'>{invites.length}</span>}
-          </i>
+          <OverlayTrigger
+            placement='right'
+            delay={{ show: 250, hide: 250 }}
+            overlay={inviteTooltip}
+          >
+            <i class="fas fa-inbox">
+              {invites.length > 0 && <span className='invite__count'>{invites.length}</span>}
+            </i>
+          </OverlayTrigger>
         </button>}
         {showInvites && sessionUser && invites.length > 0 && <InviteDropdown invites={invites} />}
       </div>

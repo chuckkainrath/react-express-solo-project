@@ -32,10 +32,10 @@
 .profile__dropdown {
   box-shadow: 0px 0px 1px 2px #ccc;
   border-radius: 3px;
-  background-color: white;
   list-style-type: none;
   position: absolute;
-  right: 10px;
+  right: 2vw;
+  top: 5vh;
   padding: 5px;
   text-align: center;
   z-index: 1;
@@ -56,7 +56,7 @@
 }
 
 .profile__btn, .group__create, .invite__btn {
-  background-color: rgb(245, 242, 233);
+  background-color: #ebe8d3;
 }
 
 .title {
