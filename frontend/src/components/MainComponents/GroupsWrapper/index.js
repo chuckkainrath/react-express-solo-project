@@ -53,7 +53,7 @@ function GroupsWrapper() {
         <h1 className={styles.no_group}>Create a group or get invited to a group to get started</h1>
       )}
       {user && (
-      <div className='groups__container'>
+      <div className={styles.groups__container}>
         {groups.map((_, idx) => {
           return <GroupContainer key={idx} groupIdx={idx} groupObj={wrapGroup(groupsObj, idx)} />
         })}

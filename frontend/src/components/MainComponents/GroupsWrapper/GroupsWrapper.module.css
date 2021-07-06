@@ -17,3 +17,7 @@
 .authorize:hover {
   transform: scale(1.1);
 }
+
+.groups__container {
+  margin-top: 5vh;
+}
