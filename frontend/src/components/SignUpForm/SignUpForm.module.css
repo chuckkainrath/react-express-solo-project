@@ -66,3 +66,7 @@ label {
 .signup__form a:hover {
   color: #095E71;
 }
+
+.demo__login {
+  margin-top: 2vh;
+}

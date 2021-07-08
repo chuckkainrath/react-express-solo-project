@@ -13,6 +13,8 @@ import SchedulePage from './components/FunctionalComponents/SchedulePage';
 import { getGroups } from './store/group';
 import { getInvites } from './store/invite';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
   const dispatch = useDispatch();

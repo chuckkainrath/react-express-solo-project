@@ -16,9 +16,11 @@ function MessageBoardPage() {
       <div className={styles.board_container}>
         <h1 className={styles.board_title}>Message Board</h1>
         <MessageCreate />
-        {messages.map((msg, idx) => {
-          return <MessageGlimpse key={msg.id} messageIdx={idx} />
-        })}
+        <div>
+          {messages.map((msg, idx) => {
+            return <MessageGlimpse key={msg.id} messageIdx={idx} />
+          })}
+        </div>
       </div>
     </div>
   );
