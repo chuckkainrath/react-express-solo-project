@@ -21,12 +21,14 @@
 .content__container {
   overflow: auto;
   height: 100%;
+  padding-bottom: 50px;
 }
 
 .message__container {
   border-bottom: 1px solid gray;
   width: 80%;
   margin: 0 auto;
+  margin-top: 10px;
 }
 
 .message__container h2 {

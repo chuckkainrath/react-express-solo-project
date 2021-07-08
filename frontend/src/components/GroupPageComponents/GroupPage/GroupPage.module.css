@@ -1,5 +1,5 @@
 .group__container {
-  width: 50%;
+  width: 60%;
   left: 50%;
   transform: translateX(-50%);
   top: 19%;
@@ -19,7 +19,7 @@
 
 .comp__container {
   position: relative;
-  margin: 70px auto 60px auto;
+  margin: 30px auto;
   width: 90%;
   display: flex;
   flex-flow: row wrap;
