@@ -1,8 +1,10 @@
 .page__container {
   width: 50%;
   min-height: 500px;
-  margin: -150px auto 20px auto;
-  position: relative;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 19%;
   z-index: 100;
   box-shadow: 0px 0px 1px 2px #ccc;
   padding: 20px 40px 50px 40px;

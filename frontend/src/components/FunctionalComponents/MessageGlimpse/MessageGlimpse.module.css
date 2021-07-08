@@ -8,6 +8,7 @@
 .msg__title {
   font-size: 1.4rem;
   font-weight: normal;
+  margin-top: 10px;
   margin-left: 10px;
   margin-bottom: 0;
   padding-bottom: 0;
@@ -17,7 +18,6 @@
   margin-top: 5px;
   margin-left: 10px;
   margin-right: 10px;
-  height: 1.6rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

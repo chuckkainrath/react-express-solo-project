@@ -1,8 +1,9 @@
 .schedule__container {
   width: 50%;
-  margin: -150px auto 20px auto;
-  position: relative;
-  min-height: 300px;
+  top: 19%;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
   z-index: 100;
   box-shadow: 0px 0px 1px 2px #ccc;
   padding: 20px 40px 50px 40px;
