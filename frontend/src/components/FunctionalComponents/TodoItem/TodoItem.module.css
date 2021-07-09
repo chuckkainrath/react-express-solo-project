@@ -17,9 +17,17 @@
   top: 0;
 }
 
-i {
-  margin: 0 3px;
-  color: gray;
+.garbage i {
+  margin-right: 5px;
+  color: gray !important;
+}
+
+.complete i {
+  color: green !important;
+}
+
+.incomplete i {
+  color: gray !important;
 }
 
 .garbage:hover i {
