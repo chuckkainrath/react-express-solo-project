@@ -15,6 +15,7 @@
 
 .invite__dropdown {
   position: absolute;
+  background-color: white;
   display: flex;
   top: 5.7vh;
 }

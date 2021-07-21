@@ -20,16 +20,10 @@ function TodoItem({item}) {
 
   return (
     <li className={styles.todo__item}>
-      {/* <input
-        type='checkbox'
-        value={completed ? 'complete' : 'in-progress'}
-        checked={completed}
-        onChange={completeClicked}
-      /> */}
       <div className={styles.task__options}>
         <span className={styles.garbage}><i onClick={deleteItem} class="fas fa-trash-alt"></i></span>
         {completed && <span className={styles.complete}><i class="fal fa-check-square" onClick={completeClicked}></i></span>}
-        {!completed && <i class="fal fa-square" onClick={completeClicked}></i>}
+        {!completed && <span className={styles.incomplete}><i class="fal fa-square" onClick={completeClicked}></i></span>}
       </div>
       <div className={styles.task}>{item.task}</div>
     </li>
